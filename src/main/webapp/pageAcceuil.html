@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Page d'acceuil</title>
 </head>
 <body>
+<a href="./connexion.html">Se connecter</a>
 <h1>Orbis</h1>
-<h2>Votre r�ference pour l'orientation</h2>
-<p>Veuillez choisir le m�tier qui vous int�resse et nous vous conseillerons les parcours correspondant:</p>
-
+<h2>Votre réference pour l'orientation</h2>
+<p>Veuillez choisir le métier qui vous intéresse et nous vous conseillerons les parcours correspondant:</p>
+  <select name="domaine" id="domaine">
+  	<option value="info">Informatique</option>
+    <option value="res">Réseaux</option>
+    <option value="sysemb">Systeme Embarqué</option>
+    <option value="elc">Électronique</option>
+  </select>
+  
+  <form id="fromMetier" method="POST">
+  <input type="radio" name="metier" value="ing" checked> Ingénieur Informatique<br>
+  <input type="radio" name="metier" value="cho"> Chômageur Informatique<br>
+  <input type="radio" name="metier" value="sta"> Stagiaire Informatique<br>
+  <input type="submit">
+  </form>
+  
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+     <script src="domaine.js"></script>
 </body>
 </html>
