@@ -1,3 +1,5 @@
+package com.Orbis.configuration.security.Authentification_Moodle;
+
 import java.io.Serializable;
 
 /**
