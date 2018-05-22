@@ -11,29 +11,29 @@ import javax.persistence.Id;
 
 
 @Entity
-public class User {
+public class Eleve {
 
     @Id
     @GeneratedValue
     @ApiModelProperty(hidden = true)
-    private Long id_user;
+    private Long idEleve;
 
     private String login;
-    private String password;
+    private String mdp;
 
-    public static Model.Find<Long, User> find = new Model.Find<Long, User>() {};
+    public static Model.Find<Long, Eleve> find = new Model.Find<Long, Eleve>() {};
 
-    public static User getUserByLogin(String login){
+    public static Eleve getUserByLogin(String login){
         Expression expr = Expr.eq("login", login);
         return find.where().add(expr).findUnique();
     }
 
-    public Long getId_user() {
-        return id_user;
+    public Long getIdEleve() {
+        return idEleve;
     }
 
-    public void setId_user(Long id_user) {
-        this.id_user = id_user;
+    public void setIdEleve(Long idEleve) {
+        this.idEleve = idEleve;
     }
 
     public String getLogin() {
@@ -44,11 +44,11 @@ public class User {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMdp() {
+        return mdp;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 }
