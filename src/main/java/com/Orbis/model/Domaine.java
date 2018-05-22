@@ -11,12 +11,12 @@ public class Domaine {
 	
 	public static Model.Find<Long, Domaine> find = new Model.Find<Long, Domaine>() {};
 	
-	public static List<Domaine> getAllDomaine(S){
+	public static List<Domaine> getAllDomaine(){
         return findList();
     }
 	
 	public Long getId_domaine() {
-        return id_user;
+        return id_domaine;
     }
 
     public void setId_domaine(Long id_domaine) {
@@ -28,6 +28,6 @@ public class Domaine {
     }
 
     public void setName(String name) {
-        this.login = name;
+        this.name = name;
     }
 }
