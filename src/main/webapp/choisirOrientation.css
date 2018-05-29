@@ -9,7 +9,7 @@ h1{
 #Cacquise{
 	margin-left:10%;
 }
-body{
+.formulaire{
 	margin-left:30%;
 }
 fieldset{
@@ -17,6 +17,11 @@ fieldset{
 }
 .skillLevel{
 	
+}
+
+.suggestion{
+	width:50%;
+	margin-left:25%;
 }
 
 .accordion {
@@ -40,6 +45,7 @@ fieldset{
 .panel {
     padding: 0 18px;
     background-color: white;
-    display: none;
     overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
 }
