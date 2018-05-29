@@ -1,0 +1,26 @@
+@charset "ISO-8859-1";
+
+body
+{
+    background-color: #fafafa;
+}
+#form
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#titre
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: Navy;
+}
+form
+{
+	border: 5px solid blue;
+    width: 15%;
+    margin: auto;
+    color: #2C9AB7;
+}
