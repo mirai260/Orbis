@@ -1,3 +1,15 @@
+package com.Orbis.model;
+
+
+import io.swagger.annotations.ApiModelProperty;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import com.avaje.ebean.Model;
 
 @Entity
 public class Domaine {
@@ -12,7 +24,7 @@ public class Domaine {
 	public static Model.Find<Long, Domaine> find = new Model.Find<Long, Domaine>() {};
 	
 	public static List<Domaine> getAllDomaine(){
-        return findList();
+        return find.all();
     }
 	
 	public Long getId_domaine() {
