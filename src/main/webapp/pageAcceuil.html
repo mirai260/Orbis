@@ -2,50 +2,43 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Page d'acceuil</title>
 <link rel="stylesheet" href="acceuil.css" />
 <link rel="stylesheet" href="menuAccordéon.css" />
-<title>Page d'acceuil</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="api1.js"></script>
+<script src="domaine.js"></script>
+<script src="menuAccordéon.js"></script>
 </head>
-<body>
-<a href="./connexion.html">Se connecter</a>
-<div id="conteneur">
-<h1 id="titre">Orbis</h1>
-<h2>Votre réference pour l'orientation</h2>
-<p>Veuillez choisir le métier qui vous intéresse et nous vous conseillerons les parcours correspondant:</p>
-  <select name="domaine" id="domaine">
-  	<option value="info">Informatique</option>
-    <option value="res">Réseaux</option>
-    <option value="sysemb">Systeme Embarqué</option>
-    <option value="elc">Électronique</option>
-  </select>
-  
-  <form id="fromMetier" method="POST">
-  <div><input type="radio" name="metier" value="ing" checked> Ingénieur Informatique<br>
-  <input type="radio" name="metier" value="cho"> Chômageur Informatique<br>
-  <input type="radio" name="metier" value="sta"> Stagiaire Informatique<br></div>
-  <div><input type="submit"></div>
-  </form>
-  
-<button class="accordion">Développeur Full stack</button>
-<div class="panel">
-  <p>LOL té viré !!!</p>
-</div>
-
-<button class="accordion">Testeur</button>
-<div class="panel">
-  <p>Dit simplement que tu veux jouer à des jeux vidéo et être payé.</p>
-</div>
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="domaine.js"></script>
-  <script src="liste.js"></script>
-  <script src="menuAccordéon.js"></script>
-
-  
-  
-  
-</div>
-</body>
+	<body>
+		<a href="./connexion.html">Se connecter</a>
+		<div id="conteneur">
+			<h1 id="titre">Orbis</h1>
+			<h2>Votre réference pour l'orientation</h2>
+			<p>Veuillez choisir le métier qui vous intéresse et nous vous conseillerons les parcours correspondant:</p>
+			<select name="domaine" id="domaine">
+				<option value="info">Informatique</option>
+				<option value="res">Réseaux</option>
+				<option value="sysemb">Systeme Embarqué</option>
+				<option value="elc">Électronique</option>
+			</select>
+			  
+			<form id="fromMetier" method="POST">
+				<div><input type="radio" name="metier" value="ing" checked> Ingénieur Informatique<br>
+				<input type="radio" name="metier" value="cho"> Chômageur Informatique<br>
+				<input type="radio" name="metier" value="sta"> Stagiaire Informatique<br></div>
+				<div><input type="submit"></div>
+			</form>
+			  
+			<button class="accordion">Développeur Full stack</button>
+			<div class="panel">
+				<p>LOL té viré !!!</p>
+			</div>
+			
+			<button class="accordion">Testeur</button>
+			<div class="panel">
+				<p>Dit simplement que tu veux jouer à des jeux vidéo et être payé.</p>
+			</div>
+		</div>
+	</body>
 </html>
