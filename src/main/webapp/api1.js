@@ -28,3 +28,5 @@ $(document).ready(function(){
 		$("#APIParcour").append('<button class="accordion">' +parcour[i].name +'</button><div class="panel"><p>'+parcour[i].description+'</p></div>');
 	}
 });
+
+$( "#body" ).load( "http://localhost:8080/Footer.html" );
