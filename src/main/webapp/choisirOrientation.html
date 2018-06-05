@@ -4,98 +4,92 @@
 <meta charset="UTF-8">
 <title>Orbis</title>
  <link rel="stylesheet" href="choisirOrientation.css" />
+ <link href="multiple-select.css" rel="stylesheet"/>
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
-<script>
-function notation(arg){
-	if(document.getElementById("Cacquise"+arg).checked){
-		document.getElementById(arg).innerHTML = "<input name='level"+
-		arg+"' type='range' min='1' max='5' value='2' step='1' onchange=shownumber('"+arg+"')><p id='number"
-		+arg+"'>2</p>";
-	}
-	else{
-		document.getElementById(arg).innerHTML = "";
-		}
-	
-}
-function shownumber(arg){
-	document.getElementById("number"+arg).innerHTML = document.getElementsByName("level"+arg)[0].value;
-}
 
-
-</script>
-<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
 
    
 <body>
-<h1>Orbis</h1>
-<h2>Votre référence pour l'orientation</h2>
-<p> Remplissez un ou plusieur champs suivants </p>
-<form action="test" > 
-métier voulu: <select id="metier">
-<option value="ingénieur">ingénieur</option>
-<option value="prof">prof</option>
-</select>
-<fieldset> <legend>Compétence désiré</legend>
-<div id="Cdésire"> 
-	<label>Java</label><input type="checkbox" name="Cfavorite" value="Java"> <br>
-	<label>Robotique</label><input type="checkbox" name="Cfavorite" value="Robotique"> <br>
-	<label>Big Data</label><input type="checkbox" name="Cfavorite" value="BigData"> <br>
-</div>
-
-</fieldset>
-<fieldset> <legend>Compétence acquise </legend>
-<div id="Cacquise">
-	<div class="skillLevel">
-		<label>Java</label>
-		<input type="checkbox" id="CacquiseJava" name="CacquiseJava" value="Java" Onclick=notation(this.value)>
-		<p id="Java"></p>
-	</div> 
-	<div class="skillLevel">
-		<label>Robotique</label>
-		<input type="checkbox" id="CacquiseRobotique" name="CacquiseRobotique" value="Robotique" Onclick=notation(this.value)>
-		<p id="Robotique"></p>
+    
+<div class="formulaire">
+	<h1>Orbis</h1>
+	<h2>Votre référence pour l'orientation</h2>
+	<p> Remplissez un ou plusieur champs suivants </p>
+	<form>
+	domaines désirez
+	<select name="domaine" id="domaine"> </select><br>
+	métier voulu: 
+	<select id="metier"></select>
+	<fieldset> <legend>Compétence désiré</legend>
+	<div id="Cdésire"> 
+		<label>Java</label><input type="checkbox" name="Cfavorite" value="Java"> <br>
+		<label>Robotique</label><input type="checkbox" name="Cfavorite" value="Robotique"> <br>
+		<label>Big Data</label><input type="checkbox" name="Cfavorite" value="BigData"> <br>
+		<button >appuie moi</button>
+	<br>
+	<select multiple="multiple" id="test" style="width:15%">
+	<option value="1">January</option>
+	<option value="12">December</option>
+	</select>
+	<script src="multiple-select.js"></script>
+    <script>
+        $('#test').multipleSelect();
+    </script>
+	
+	</fieldset>
+	<fieldset> <legend>Compétence acquise </legend>
+	<div id="Cacquise">
+		<div class="skillLevel">
+			<label>Java</label>
+			<input type="checkbox" id="CacquiseJava" name="CacquiseJava" value="Java" onclick=notation(this.value)>
+			<p id="Java"></p>
+		</div> 
+		<div class="skillLevel">
+			<label>Robotique</label>
+			<input type="checkbox" id="CacquiseRobotique" name="CacquiseRobotique" value="Robotique" Onclick=notation(this.value)>
+			<p id="Robotique"></p>
+		</div>
+		<div class="skillLevel">
+			<label>Big Data</label>
+			<input type="checkbox" id="CacquiseBigData" name="CacquiseBigData" value="BigData" Onclick=notation(this.value)>
+			<p id="BigData"></p>
+		</div>
 	</div>
-	<div class="skillLevel">
-		<label>Big Data</label>
-		<input type="checkbox" id="CacquiseBigData" name="CacquiseBigData" value="BigData" Onclick=notation(this.value)>
-		<p id="BigData"></p>
-	</div>
+	</fieldset>
+	<INPUT type="submit" value="Envoyer"> <INPUT type="reset">
+	</form>
 </div>
-</fieldset>
-<INPUT type="submit" value="Envoyer"> <INPUT type="reset">
-</form>
-<h2>Accordion</h2>
+<div class="suggestion">
+<h2 style="text-align:center">Accordeon</h2>
 
 <button class="accordion">Suggestion 1</button>
 <div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	<h3 id="titleModulAnswer">Ingénieur</h3>
+	<div class="repoussePrerequi">
+	<p>java</p>
+	</div>
 </div>
 
 <button class="accordion">Suggestion 2</button>
 <div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	<h3 id="titleModulAnswer">marketing</h3>
+	<div class="repoussePrerequi">
+	<p>parlotte +++</p>
+	</div>
 </div>
 
 <button class="accordion">Suggestion 3</button>
 <div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	<h3 id="titleModulAnswer">prof</h3>
+	<div class="repoussePrerequi">
+	<p>patience</p>
+	</div>
 </div>
-<script type="text/javascript">
-var acc = document.getElementsByClassName("accordion");
-var i;
 
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
-}
-</script> 
+<script src="choisirOrientation.js"></script>
+<script src="api1.js"></script>
+</div> 
 
 </body>
 </html>
