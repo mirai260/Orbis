@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.List;
 
-public class Template extends Model {
+public class Template extends Model{
 
     @Id
     @GeneratedValue

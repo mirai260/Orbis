@@ -11,32 +11,32 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Eleve extends Model {
+public class Admin extends Model {
 
     @Id
     @GeneratedValue
     @ApiModelProperty(hidden = true)
-    private Long id_eleve;
+    private Long id_admin;
 
     private String login;
     private String mdp;
 
-    public static Model.Find<Long, Eleve> find = new Model.Find<Long, Eleve>() {};
+    public static Model.Find<Long, Admin> find = new Model.Find<Long, Admin>() {};
 
-    public static Eleve getEleveByLogin(String login){
+    public static Admin getAdminByLogin(String login){
         Expression expr = Expr.eq("login", login);
         return find.where().add(expr).findUnique();
     }
 
-    public Long getId_eleve() {
-		return id_eleve;
-	}
+    public Long getId_admin() {
+        return id_admin;
+    }
 
-	public void setId_eleve(Long id_eleve) {
-		this.id_eleve = id_eleve;
-	}
+    public void setId_admin(Long id_admin) {
+        this.id_admin = id_admin;
+    }
 
-	public String getLogin() {
+    public String getLogin() {
         return login;
     }
 
