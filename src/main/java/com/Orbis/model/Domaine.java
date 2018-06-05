@@ -1,6 +1,5 @@
 package com.Orbis.model;
 
-
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
