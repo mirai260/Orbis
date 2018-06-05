@@ -1,8 +1,14 @@
+
 create table admin (
   id_admin                      bigint auto_increment not null,
   login                         varchar(255),
   mdp                           varchar(255),
   constraint pk_admin primary key (id_admin)
+  
+create table concept (
+  id_concept                    bigint auto_increment not null,
+  nom                           varchar(255),
+  constraint pk_concept primary key (id_concept)
 );
 
 create table domaine (
@@ -16,6 +22,19 @@ create table eleve (
   login                         varchar(255),
   mdp                           varchar(255),
   constraint pk_eleve primary key (id_eleve)
+);
+
+create table metier (
+  id_metier                     bigint auto_increment not null,
+  nom                           varchar(255),
+  description                   varchar(255),
+  constraint pk_metier primary key (id_metier)
+);
+
+create table metier_domaine (
+  id_metier                     bigint auto_increment not null,
+  id_domaine                    bigint,
+  constraint pk_metier_domaine primary key (id_metier)
 );
 
 create table parcours (

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Orbis</title>
+ <link rel="stylesheet" href="choisirOrientation.css" />
+ <link href="multiple-select.css" rel="stylesheet"/>
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+
+
+   
+<body>
+    
+<div class="formulaire">
+	<h1>Orbis</h1>
+	<h2>Votre référence pour l'orientation</h2>
+	<p> Remplissez un ou plusieur champs suivants </p>
+	<form>
+	domaines désirez
+	<select name="domaine" id="domaine"> </select><br>
+	métier voulu: 
+	<select id="metier"></select>
+	<fieldset> <legend>Compétence désiré</legend>
+	<div id="Cdésire"> 
+		<label>Java</label><input type="checkbox" name="Cfavorite" value="Java"> <br>
+		<label>Robotique</label><input type="checkbox" name="Cfavorite" value="Robotique"> <br>
+		<label>Big Data</label><input type="checkbox" name="Cfavorite" value="BigData"> <br>
+		<button >appuie moi</button>
+	<br>
+	<select multiple="multiple" id="test" style="width:15%">
+	<option value="1">January</option>
+	<option value="12">December</option>
+	</select>
+	<script src="multiple-select.js"></script>
+    <script>
+        $('#test').multipleSelect();
+    </script>
+	
+	</fieldset>
+	<fieldset> <legend>Compétence acquise </legend>
+	<div id="Cacquise">
+		<div class="skillLevel">
+			<label>Java</label>
+			<input type="checkbox" id="CacquiseJava" name="CacquiseJava" value="Java" onclick=notation(this.value)>
+			<p id="Java"></p>
+		</div> 
+		<div class="skillLevel">
+			<label>Robotique</label>
+			<input type="checkbox" id="CacquiseRobotique" name="CacquiseRobotique" value="Robotique" Onclick=notation(this.value)>
+			<p id="Robotique"></p>
+		</div>
+		<div class="skillLevel">
+			<label>Big Data</label>
+			<input type="checkbox" id="CacquiseBigData" name="CacquiseBigData" value="BigData" Onclick=notation(this.value)>
+			<p id="BigData"></p>
+		</div>
+	</div>
+	</fieldset>
+	<INPUT type="submit" value="Envoyer"> <INPUT type="reset">
+	</form>
+</div>
+<div class="suggestion">
+<h2 style="text-align:center">Accordeon</h2>
+
+<button class="accordion">Suggestion 1</button>
+<div class="panel">
+	<h3 id="titleModulAnswer">Ingénieur</h3>
+	<div class="repoussePrerequi">
+	<p>java</p>
+	</div>
+</div>
+
+<button class="accordion">Suggestion 2</button>
+<div class="panel">
+	<h3 id="titleModulAnswer">marketing</h3>
+	<div class="repoussePrerequi">
+	<p>parlotte +++</p>
+	</div>
+</div>
+
+<button class="accordion">Suggestion 3</button>
+<div class="panel">
+	<h3 id="titleModulAnswer">prof</h3>
+	<div class="repoussePrerequi">
+	<p>patience</p>
+	</div>
+</div>
+
+<script src="choisirOrientation.js"></script>
+<script src="api1.js"></script>
+</div> 
+
+</body>
+</html>
