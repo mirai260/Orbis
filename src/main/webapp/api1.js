@@ -1,9 +1,9 @@
 var domaines;
 $.post('api/getDomaines', function(data) {
 	domaines = data;
-	console.log(domaines);
 });
 $(document).ready(function(){
-//	for(domaine)
-//	$("#domaine").append
+	for(i in domaines) {
+		$("#domaine").append('<option value='+domaines[i].name+'>'+domaines[i].name+'</option>');
+	}
 });
