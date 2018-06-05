@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-
 @Entity
 public class Professeur extends Model {
 
@@ -43,7 +42,6 @@ public class Professeur extends Model {
     public void setLogin(String login) {
         this.login = login;
     }
-
     public String getMdp() {
         return mdp;
     }
@@ -52,3 +50,4 @@ public class Professeur extends Model {
         this.mdp = mdp;
     }
 }
+
