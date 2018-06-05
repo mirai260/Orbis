@@ -56,3 +56,15 @@ body {
 .Parcours{
   border: 1px solid black;
 }
+.Nouveau_metier{
+  display: none;
+}
+.Metier_affiche{
+  display: flex;
+}
+.hidden{
+ display: none;
+}
+.show{
+  display:show;
+}
