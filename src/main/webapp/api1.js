@@ -29,4 +29,4 @@ $(document).ready(function(){
 	}
 });
 
-$( "#body" ).load( "http://localhost:8080/Footer.html" );
+$( "#footer" ).load( "http://localhost:8080/Footer.html" );
