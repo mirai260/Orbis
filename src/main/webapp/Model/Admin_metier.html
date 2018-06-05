@@ -45,32 +45,31 @@
     <body>
         
         <p>Bonjour Admin</p><!-- afficher le prénom personnalisé de la personne-->
-        <select>
-            <option>Parcours</option>
-            <option>Module</option>
 
-        </select>
-        <div class="Parcours">
-          <p>Parcours</p>
-          <button type="button">Ajouter un parcours</button>
+        <div class="Metier">
+          <p> Métiers</p>
+          <button type="button">Ajouter un métier</button>
+          <div class="Nouveau_metier">
+            <form action="" method="get">
+              <input id="nom_metier" type="text" name="nom_metier">
+              <select id="parcours_associe">
+                <option>Genie logiciel</option>
+                <option>Systeme embarque</option>
+
+              </select>
+              <select id="module_associe">
+                <option>Management international</option>
+                <option>Cybersecurite</option>
+
+              </select>
+              <select id="domaine">
+                 <option>Big data</option>
+                 <option>Multimedia</option>
+
+              </select>
+          </form>
         </div>
-        <div class="Modules">
-          <p>Module</p>
-          <button type="button">Ajouter un module</button>
-        </div>
-        <button type="button">Ajouter un concept</button>
-        <button type="button">Ajouter un prérequis</button>
         
 
-
     </body>
-    <script src="D:\dev\Orbis\src\main\webapp\JS\jquery-1.12.0.js" type="text/javascript"></script>
-        <script src="D:\dev\Orbis\src\main\webapp\Js\admin.js" type="text/javascript"></script>
-
-    
-
 </html>
-<!-- a faire :quand parcours ou module est sélectionner, les afficher (récupérer la liste)
-
-
-
