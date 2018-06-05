@@ -14,7 +14,7 @@ body {
   padding-right: 8px;
 }
 
-/*.Navbar__Items, .Navbar__Link-toggle {
+.Navbar__Items, .Navbar__Link-toggle {
   display: flex;
 }
 
@@ -22,18 +22,18 @@ body {
   margin-left:auto;
 }
 
-.Navbar__Link-toggle {
+/*.Navbar__Link-toggle {
   display: none;
-}
+}*/
 
-/*@media only screen and (max-width: 9968px) {*/
+@media only screen and (max-width: 9968px) {
   .Navbar__Items,
   .Navbar,  .Navbar__Link-toggle {
     flex-direction: column;
   }
-  .Navbar__Items {
+  /*.Navbar__Items {
     display:none;
-  }
+  }*/
   .Navbar__Items--right {
     margin-left:0;
   }
@@ -46,7 +46,25 @@ body {
     position: absolute;
     cursor: pointer;
     margin-left:0;
-    height: 100000px;
+    /*height: 100000px;*/
    } 
 
-/*}*/
+}
+.Modules{
+  border: 1px solid black;
+}
+.Parcours{
+  border: 1px solid black;
+}
+.Nouveau_metier{
+  display: none;
+}
+.Metier_affiche{
+  display: flex;
+}
+.hidden{
+ display: none;
+}
+.show{
+  display:show;
+}

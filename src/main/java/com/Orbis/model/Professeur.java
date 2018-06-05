@@ -1,32 +1,38 @@
 package com.Orbis.model;
 
+import com.avaje.ebean.Expr;
+import com.avaje.ebean.Expression;
+import com.avaje.ebean.Model;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import com.avaje.ebean.Model;
-
 @Entity
-public class Professeur {
+public class Professeur extends Model {
 
-	@Id
+    @Id
     @GeneratedValue
     @ApiModelProperty(hidden = true)
-    private Long idProfesseur;
-	
-	private String login;
-	private String mdp;
-	
-	public static Model.Find<Long, Professeur> find = new Model.Find<Long, Professeur>() {};
-	
-	public Long getIdProfesseur() {
-        return idProfesseur;
+    private Long id_professeur;
+
+    private String login;
+    private String mdp;
+
+    public static Model.Find<Long, Professeur> find = new Model.Find<Long, Professeur>() {};
+
+    public static Professeur getProfesseurByLogin(String login){
+        Expression expr = Expr.eq("login", login);
+        return find.where().add(expr).findUnique();
     }
 
-    public void setIdProfesseur(Long idProfesseur) {
-        this.idProfesseur = idProfesseur;
+    public Long getId_professeur() {
+        return id_professeur;
+    }
+
+    public void setId_professeur(Long id_professeur) {
+        this.id_professeur = id_professeur;
     }
 
     public String getLogin() {
@@ -36,7 +42,6 @@ public class Professeur {
     public void setLogin(String login) {
         this.login = login;
     }
-    
     public String getMdp() {
         return mdp;
     }
@@ -45,3 +50,4 @@ public class Professeur {
         this.mdp = mdp;
     }
 }
+

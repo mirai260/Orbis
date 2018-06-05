@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.avaje.ebean.Model;
+
 @Entity
-public class Prerequis {
+public class Prerequis extends Model{
 
     @Id
     @GeneratedValue
@@ -18,6 +20,11 @@ public class Prerequis {
     private String parcours;
     private String description;
 
+    
+    
+    public static Model.Find<Long, Prerequis> find = new Model.Find<Long, Prerequis>() {};  // Outil de recherche dans la bdd
+    
+    
 
     public Long getIdParcours() {
         return idParcours;

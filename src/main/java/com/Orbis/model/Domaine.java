@@ -13,7 +13,7 @@ import com.avaje.ebean.Expression;
 import com.avaje.ebean.Model;
 
 @Entity
-public class Domaine {
+public class Domaine extends Model{
 
 	@Id
     @GeneratedValue
