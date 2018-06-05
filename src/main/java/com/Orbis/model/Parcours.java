@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Parcours{
+public class Parcours extends Model{
 
     @Id
     @GeneratedValue

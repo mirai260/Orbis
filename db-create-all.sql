@@ -1,3 +1,10 @@
+create table admin (
+  id_admin                      bigint auto_increment not null,
+  login                         varchar(255),
+  mdp                           varchar(255),
+  constraint pk_admin primary key (id_admin)
+);
+
 create table domaine (
   id_domaine                    bigint auto_increment not null,
   name                          varchar(255),
@@ -30,5 +37,12 @@ create table prerequis_parcours (
   id_prerequis                  bigint,
   id_parcours                   bigint,
   constraint pk_prerequis_parcours primary key (id_prerequis_parcours)
+);
+
+create table professeur (
+  id_professeur                 bigint auto_increment not null,
+  login                         varchar(255),
+  mdp                           varchar(255),
+  constraint pk_professeur primary key (id_professeur)
 );
 
