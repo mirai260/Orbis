@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.avaje.ebean.Expr;
+import com.avaje.ebean.Expression;
 import com.avaje.ebean.Model;
 
 @Entity
@@ -24,6 +26,11 @@ public class Domaine {
 	
 	public static List<Domaine> getAllDomaine(){
         return find.all();
+    }
+	
+	public static Long getIdDomaineByName(String domaine){
+		Expression e1 = Expr.eq("name", domaine);
+        return find.where().add(e1).findUnique().id_domaine;
     }
 	
 	public Long getId_domaine() {
