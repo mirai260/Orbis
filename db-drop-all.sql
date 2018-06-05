@@ -1,3 +1,5 @@
+drop table if exists concept;
+
 drop table if exists domaine;
 
 drop table if exists eleve;

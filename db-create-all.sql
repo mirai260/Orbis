@@ -1,3 +1,9 @@
+create table concept (
+  id_concept                    bigint auto_increment not null,
+  nom                           varchar(255),
+  constraint pk_concept primary key (id_concept)
+);
+
 create table domaine (
   id_domaine                    bigint auto_increment not null,
   name                          varchar(255),
