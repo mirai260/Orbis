@@ -1,8 +1,6 @@
-
 drop table if exists admin;
 
 drop table if exists concept;
-
 
 drop table if exists domaine;
 
