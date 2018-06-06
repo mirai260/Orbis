@@ -1,0 +1,70 @@
+body { 
+  margin: 0
+}
+
+.Navbar {
+  background-color: #46ACC2;
+  display: flex;
+ padding: 16px;
+  font-family: sans-serif;
+  color: white;
+}
+
+.Navbar__Link {
+  padding-right: 8px;
+}
+
+.Navbar__Items, .Navbar__Link-toggle {
+  display: flex;
+}
+
+.Navbar__Items--right {
+  margin-left:auto;
+}
+
+/*.Navbar__Link-toggle {
+  display: none;
+}*/
+
+@media only screen and (max-width: 9968px) {
+  .Navbar__Items,
+  .Navbar,  .Navbar__Link-toggle {
+    flex-direction: column;
+  }
+  /*.Navbar__Items {
+    display:none;
+  }*/
+  .Navbar__Items--right {
+    margin-left:0;
+  }
+  .Navbar__ToggleShow, .Navbar__Link-toggle {
+    display: flex;
+  }
+  .Navbar__Link-toggle  {
+    align-self: flex-start;
+    display: initial !important;
+    position: absolute;
+    cursor: pointer;
+    margin-left:0;
+    /*height: 100000px;*/
+   } 
+
+}
+.Modules{
+  border: 1px solid black;
+}
+.Parcours{
+  border: 1px solid black;
+}
+.Nouveau_metier{
+  display: none;
+}
+.Metier_affiche{
+  display: flex;
+}
+.hidden{
+ display: none;
+}
+.show{
+  display:show;
+}
