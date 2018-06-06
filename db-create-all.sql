@@ -1,10 +1,10 @@
-
 create table admin (
   id_admin                      bigint auto_increment not null,
   login                         varchar(255),
   mdp                           varchar(255),
   constraint pk_admin primary key (id_admin)
-  
+);
+
 create table concept (
   id_concept                    bigint auto_increment not null,
   nom                           varchar(255),
