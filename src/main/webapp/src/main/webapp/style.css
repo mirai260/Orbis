@@ -1,0 +1,44 @@
+#modules
+{
+    float: left;
+    width: 350px;
+    border: 1px solid black;
+    text-align: justify;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+
+#concepts1
+{
+    width: 350px;
+    border: 1px solid black;
+    text-align: justify;
+    padding: 12px;
+    margin-bottom: 20px;
+    display : none;
+}
+
+#concepts2
+{
+    width: 350px;
+    border: 1px solid black;
+    text-align: justify;
+    padding: 12px;
+    margin-bottom: 20px;
+    display : none;
+}
+
+#modulesetconcepts
+{
+    display: flex;
+}
+
+h1
+{
+
+}
+
+h2
+{
+
+}
