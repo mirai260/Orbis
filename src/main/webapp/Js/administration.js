@@ -2,15 +2,15 @@
 var tables = 
 [
 	{nom : "Admin", colonnes : ["id_admin", "login", "mdp"], can_modify : true},
-	{nom : "Concepts", colonnes : ["id_concept", "nom"], can_modify : true},
+	{nom : "Concept", colonnes : ["id_concept", "nom"], can_modify : true},
 	{nom : "Domaine", colonnes : ["id_domaine", "name"], can_modify : true},
 	{nom : "Eleve", colonnes : ["id_eleve", "login", "mdp"], can_modify : true},
 	{nom : "Metier", colonnes : ["id_metier", "nom", "description"], can_modify : true},
-	{nom : "Metier_domaine", colonnes : ["id_domaine", "id_metier"], can_modify : false},
+	{nom : "Metier_domaine", colonnes : ["id_metier_domaine", "id_domaine", "id_metier"], can_modify : false},
 	{nom : "Module_complementaire", colonnes : ["id_module", "nom", "description", "lien_fiche_module"], can_modify : true},
 	{nom : "Parcours", colonnes : ["id_parcours", "nom", "description"], can_modify : true},
 	{nom : "Prerequis", colonnes : ["id_prerequis", "nom", "description", "niveau", "note"], can_modify : true},
-	{nom : "Prerequis_parcours", colonnes : ["id_parcours", "id_prerequis"], can_modify : false},
+	{nom : "Prerequis_parcours", colonnes : ["id_prerequis_parcours", "id_parcours", "id_prerequis"], can_modify : false},
 	{nom : "Professeur", colonnes : ["id_professeur", "login", "mdp"], can_modify : true}
 ];
 
