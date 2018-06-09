@@ -28,6 +28,11 @@ public class Domaine extends Model{
         return find.all();
     }
 	
+	public static Domaine getDomaineById(long id_domaine){
+		Expression e1 = Expr.eq("id_domaine", id_domaine);
+        return find.where().add(e1).findUnique();
+    }
+	
 	public static Long getIdDomaineByName(String domaine){
 		Expression e1 = Expr.eq("name", domaine);
         return find.where().add(e1).findUnique().id_domaine;

@@ -1,6 +1,8 @@
 package com.Orbis.model;
 
 
+import com.avaje.ebean.Expr;
+import com.avaje.ebean.Expression;
 import com.avaje.ebean.Model;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -14,7 +16,7 @@ public class PrerequisParcours extends Model{
     @Id
     @GeneratedValue
     @ApiModelProperty(hidden = true)
-    private Long idPrerequisParcours;
+    private Long id_prerequis_parcours;
 
     private Long idPrerequis;
     private Long idParcours;
@@ -22,13 +24,17 @@ public class PrerequisParcours extends Model{
 
     public static Model.Find<Long, PrerequisParcours> find = new Model.Find<Long, PrerequisParcours>() {};  // Outil de recherche dans la bdd
 
+    public static PrerequisParcours getPrerequisParcoursById(Long id_prerequis_parcours){
+		Expression expr = Expr.eq("id_prerequis_parcours", id_prerequis_parcours);
+		return find.where().add(expr).findUnique();
+	}
 
-    public Long getIdPrerequisParcours() {
-        return idPrerequisParcours;
+    public Long getId_prerequis_parcours() {
+        return id_prerequis_parcours;
     }
 
-    public void setIdPrerequisParcours(Long idPrerequisParcours) {
-        this.idPrerequisParcours = idPrerequisParcours;
+    public void setId_prerequis_parcours(Long id_prerequis_parcours) {
+        this.id_prerequis_parcours = id_prerequis_parcours;
     }
 
     public Long getIdPrerequis() {

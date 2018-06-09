@@ -1,0 +1,35 @@
+
+
+<html>
+
+<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+	
+	<h1>TEST AJAX</h1>
+	
+	<script type="text/javascript">
+		console.log("test");
+		/*const xmlhttp = new XMLHttpRequest();
+		xmlhttp.open('POST', 'http://localhost:8080/api/addEleve', true);
+		xmlhttp.setRequestHeader("Content-Type", "application/json");
+		xmlhttp.send(JSON.stringify({login:"test", mdp:"briet"}));*/
+		
+		var url = "http://localhost:8080/api/addEleve";
+		var data = {login : "test111", mdp : "briet"};
+		var type="POST";
+		$.ajax({
+				type : type,
+				url : url, 
+				data : JSON.stringify(data),
+				headers : {"Content-Type": "application/json"}
+		})
+		
+	</script>
+</body>
+
+</html>

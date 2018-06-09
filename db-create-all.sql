@@ -32,23 +32,26 @@ create table metier (
 );
 
 create table metier_domaine (
-  id_metier                     bigint auto_increment not null,
+  id_metier_domaine             bigint auto_increment not null,
+  id_metier                     bigint,
   id_domaine                    bigint,
-  constraint pk_metier_domaine primary key (id_metier)
+  constraint pk_metier_domaine primary key (id_metier_domaine)
 );
 
 create table parcours (
   id_parcours                   bigint auto_increment not null,
-  parcours                      varchar(255),
+  nom                           varchar(255),
   description                   varchar(255),
   constraint pk_parcours primary key (id_parcours)
 );
 
 create table prerequis (
-  id_parcours                   bigint auto_increment not null,
-  parcours                      varchar(255),
+  id_prerequis                  bigint auto_increment not null,
+  nom                           varchar(255),
   description                   varchar(255),
-  constraint pk_prerequis primary key (id_parcours)
+  niveau                        varchar(255),
+  note                          varchar(255),
+  constraint pk_prerequis primary key (id_prerequis)
 );
 
 create table prerequis_parcours (
