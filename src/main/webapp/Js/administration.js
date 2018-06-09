@@ -62,7 +62,7 @@ function getAllData(){
 	for (i in tables){
 		getData(i);
 	}
-	emptyTable(2)
+	//emptyTable(2)
 }
 
 function getData(i){
