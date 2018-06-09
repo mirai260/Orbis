@@ -1,5 +1,6 @@
 package com.Orbis.api;
 
+import com.Orbis.model.Concept;
 import com.Orbis.model.Domaine;
 import com.Orbis.model.Eleve;
 import com.Orbis.model.Parcours;
@@ -132,6 +133,29 @@ public class bddAdminApiController implements bddAdminApi{
     public ResponseEntity<Void> deletePrerequisParcours(@ApiParam(value = "Id du prerequisParcours à supprimer" ,required=true) @RequestBody long id){
     	PrerequisParcours prerequisParcours = PrerequisParcours.getPrerequisParcoursById(id);
     	prerequisParcours.delete();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    /************* Concepts ***************/
+    public ResponseEntity<List<Concept>> getAllConcept(){
+    	return new ResponseEntity<>(Concept.find.all(), HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> addConcept(@ApiParam(value = "Concept à ajouter" ,required=true) @RequestBody Concept concept){
+    	concept.insert();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> deleteConcept(@ApiParam(value = "Id du concept à supprimer" ,required=true) @RequestBody long id){
+    	Concept concept = Concept.getConceptById(id);
+    	concept.delete();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> modifyConcept(@ApiParam(value = "Concept à modifier" ,required=true) @RequestBody Concept concept){
+    	Concept oldConcept = Concept.getConceptById(concept.getId_concept());
+    	oldConcept.delete();
+    	concept.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
 

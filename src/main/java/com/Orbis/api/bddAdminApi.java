@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.Orbis.model.Concept;
 import com.Orbis.model.Domaine;
 import com.Orbis.model.Eleve;
 import com.Orbis.model.Parcours;
@@ -99,7 +100,7 @@ public interface bddAdminApi {
     })
     @RequestMapping(value = "api/modifyEleve",
             produces = { "application/json" },
-            method = RequestMethod.DELETE)
+            method = RequestMethod.PUT)
     ResponseEntity<Void> modifyEleve(@ApiParam(value = "Eleve à modifier" ,required=true) @RequestBody Eleve eleve);
     
     
@@ -137,7 +138,7 @@ public interface bddAdminApi {
     })
     @RequestMapping(value = "api/modifyParcours",
             produces = { "application/json" },
-            method = RequestMethod.DELETE)
+            method = RequestMethod.PUT)
     ResponseEntity<Void> modifyParcours(@ApiParam(value = "Parcours à modifier" ,required=true) @RequestBody Parcours parcours);
     
     
@@ -175,7 +176,7 @@ public interface bddAdminApi {
     })
     @RequestMapping(value = "api/modifyPrerequis",
             produces = { "application/json" },
-            method = RequestMethod.DELETE)
+            method = RequestMethod.PUT)
     ResponseEntity<Void> modifyPrerequis(@ApiParam(value = "Prerequis à modifier" ,required=true) @RequestBody Prerequis prerequis);
     
     /************ Prerequis Parcours **************/
@@ -207,4 +208,43 @@ public interface bddAdminApi {
             method = RequestMethod.DELETE)
     ResponseEntity<Void> deletePrerequisParcours(@ApiParam(value = "Id du prerequis_parcours à supprimer" ,required=true) @RequestBody long id);
     
+    
+    /************ Concept **************/
+    
+    @ApiOperation(value = "Récupérer tout les concepts", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = Void.class)
+    })
+    @RequestMapping(value = "api/getAllConcept",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<List<Concept>> getAllConcept();
+    
+    
+    @ApiOperation(value = "Ajouter un concept", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ajout effectué", response = Void.class),
+    })
+    @RequestMapping(value = "api/addConcept",
+            produces = { "application/json" },
+            method = RequestMethod.POST)
+    ResponseEntity<Void> addConcept(@ApiParam(value = "concept à ajouter" ,required=true) @RequestBody Concept concept);
+    
+    @ApiOperation(value = "Supprimer un concept", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Supression effectué", response = Void.class)
+    })
+    @RequestMapping(value = "api/deleteConcept",
+            produces = { "application/json" },
+            method = RequestMethod.DELETE)
+    ResponseEntity<Void> deleteConcept(@ApiParam(value = "Id du concept à supprimer" ,required=true) @RequestBody long id);
+    
+    @ApiOperation(value = "Modifier un concept", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "modification effectué", response = Void.class)
+    })
+    @RequestMapping(value = "api/modifyConcept",
+            produces = { "application/json" },
+            method = RequestMethod.PUT)
+    ResponseEntity<Void> modifyConcept(@ApiParam(value = "Concept à modifier" ,required=true) @RequestBody Concept concept);
 }
