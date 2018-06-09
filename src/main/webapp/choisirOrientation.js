@@ -28,7 +28,7 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-function metier(){
+/*function metier(){
 	var domainesMetier;
 	$.post('api/getDomainesMetier', function(data) {
 		domainesMetier = data;
@@ -36,9 +36,9 @@ function metier(){
 			$("#metier").append('<option value='+domainesMetier[i].name+'>'+domainesMetier[i].name+'</option>');
 		}
 	});
-}
+}*/
 
-function competanceDésire(){
+/*function competanceDésire(){
 	var domainesCD;
 	$.post('api/getDomainesCD', function(data) {
 		domainesCD = data;
@@ -46,4 +46,73 @@ function competanceDésire(){
 			$("#Cdésire").append('<label>'+domainesCD[i].name+'</label><input type="checkbox" name="Cfavorite" value='+domainesCD[i].name+'>');
 		}
 	});
+}*/
+
+$(document).ready(function(){
+	var domaines;
+	var metiers;
+	var dom;
+	$.post('api/getDomaines', function(data) {
+		domaines = data;
+		for(i in domaines) {
+			$("#domaine").append('<option value='+domaines[i].name+'>'+domaines[i].name+'</option>');
+		}
+		dom = $('#domaine option:selected').val();
+		console.log(dom);
+		$.ajax({
+				url: 'api/getMetiersByDomaine', 
+				type: 'POST',
+				data: "domaine="+dom,
+				success: function(data) {
+					console.log("coucou");
+					metiers = data;
+					for(i in metiers) {
+						$("#APIMetier").append('<option value='+metiers[i].nom+'>'+metiers[i].nom+'</option>');
+					}
+				},
+				dataType: 'json'
+		});
+		var domainesCD;
+		$.post('api/getAllConcepts', function(data) {
+			domainesCD = data;
+			console.log(data);
+			for(i in domainesCD) {
+				$("#Cdésire").append('<input type="checkbox" id="Cdesire'+domainesCD[i].nom+'" name="Cdesire'+domainesCD[i].nom+'" value="Cdesire'+domainesCD[i].nom+'">'+domainesCD[i].nom+'<br>');
+			}
+		});
+	});
+	
+});
+
+function listMetier(){
+	var oSelect = document.getElementById('APIMetier');
+	oSelect.innerHTML = '';
+	dom = $('#domaine option:selected').val();
+	console.log(dom);
+	$.ajax({
+			url: 'api/getMetiersByDomaine', 
+			type: 'POST',
+			data: "domaine="+dom,
+			success: function(data) {
+				console.log("coucou");
+				metiers = data;
+				for(i in metiers) {
+					$("#APIMetier").append('<option value='+metiers[i].nom+'>'+metiers[i].nom+'</option>');
+				}
+			},
+			dataType: 'json'
+	});
+	
 }
+
+//var parcour;
+//$.post('api/getParcour',$('#metier').text(), function(data) {
+//	parcour = data;
+//});
+//$(document).ready(function(){
+//	for(i in parcour) {
+//		$("#APIParcour").append('<button class="accordion">' +parcour[i].name +'</button><div class="panel"><p>'+parcour[i].description+'</p></div>');
+//	}
+//});
+//
+//$( "#footer" ).load( "http://localhost:8080/Footer.html" );
