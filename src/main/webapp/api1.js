@@ -9,24 +9,24 @@ $(document).ready(function(){
 });
 
 
-//var metier;
-//$.post('api/getAllMetier',$('#domaine').text(), function(data) {
-//	metier = data;
-//});
-//$(document).ready(function(){
-//	for(i in metier) {
-//		$("#APIMetier").append('<input type="radio" name="metier" value='+metier[i].name+' checked>' +metier[i].name+ '<br>');
-//	}
-//});
-//
-//var parcour;
-//$.post('api/getParcour',$('#metier').text(), function(data) {
-//	parcour = data;
-//});
-//$(document).ready(function(){
-//	for(i in parcour) {
-//		$("#APIParcour").append('<button class="accordion">' +parcour[i].name +'</button><div class="panel"><p>'+parcour[i].description+'</p></div>');
-//	}
-//});
+var metier;
+$.post('api/getMetiersByDomaine',$('#domaine').text(), function(data) {
+	metier = data;
+});
+$(document).ready(function(){
+	for(i in metier) {
+		$("#APIMetier").append('<input type="radio" name="metier" value='+metier[i].name+' checked>' +metier[i].name+ '<br>');
+	}
+});
+
+var parcour;
+$.post('api/getParcoursWithPrerequis',$('#metier').text(), function(data) {
+	parcour = data;
+});
+$(document).ready(function(){
+	for(i in parcour) {
+		$("#APIParcour").append('<button class="accordion">' +parcour[i].name +'</button><div class="panel"><p>'+parcour[i].description+'</p></div>');
+	}
+});
 
 $( "#footer" ).load( "http://localhost:8080/Footer.html" );
