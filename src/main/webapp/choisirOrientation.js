@@ -72,7 +72,14 @@ $(document).ready(function(){
 				},
 				dataType: 'json'
 		});
-		
+		var domainesCD;
+		$.post('api/getAllConcepts', function(data) {
+			domainesCD = data;
+			console.log(data);
+			for(i in domainesCD) {
+				$("#Cdésire").append('<input type="checkbox" id="Cdesire'+domainesCD[i].nom+'" name="Cdesire'+domainesCD[i].nom+'" value="Cdesire'+domainesCD[i].nom+'">'+domainesCD[i].nom+'<br>');
+			}
+		});
 	});
 	
 });
