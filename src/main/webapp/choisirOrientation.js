@@ -62,7 +62,7 @@ $(document).ready(function(){
 		$.ajax({
 				url: 'api/getMetiersByDomaine', 
 				type: 'POST',
-				data: "domaine=Informatique",
+				data: "domaine="+dom,
 				success: function(data) {
 					console.log("coucou");
 					metiers = data;
@@ -76,6 +76,27 @@ $(document).ready(function(){
 	});
 	
 });
+
+function listMetier(){
+	var oSelect = document.getElementById('APIMetier');
+	oSelect.innerHTML = '';
+	dom = $('#domaine option:selected').val();
+	console.log(dom);
+	$.ajax({
+			url: 'api/getMetiersByDomaine', 
+			type: 'POST',
+			data: "domaine="+dom,
+			success: function(data) {
+				console.log("coucou");
+				metiers = data;
+				for(i in metiers) {
+					$("#APIMetier").append('<option value='+metiers[i].nom+'>'+metiers[i].nom+'</option>');
+				}
+			},
+			dataType: 'json'
+	});
+	
+}
 
 //var parcour;
 //$.post('api/getParcour',$('#metier').text(), function(data) {
