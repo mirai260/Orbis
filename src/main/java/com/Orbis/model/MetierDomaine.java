@@ -19,6 +19,8 @@ public class MetierDomaine {
 	@Id
     @GeneratedValue
     @ApiModelProperty(hidden = true)
+	private Long id_metier_domaine;
+	
     private Long idMetier;
 	private Long idDomaine;
 	
@@ -34,6 +36,21 @@ public class MetierDomaine {
         return res;
     }
 	
+	public static MetierDomaine getMetierDomaineById(Long id_metier_domaine){
+		Expression expr = Expr.eq("id_metier_domaine", id_metier_domaine);
+		return find.where().add(expr).findUnique();
+	}
+	
+	
+
+	public Long getId_metier_domaine() {
+		return id_metier_domaine;
+	}
+
+	public void setId_metier_domaine(Long id_metier_domaine) {
+		this.id_metier_domaine = id_metier_domaine;
+	}
+
 	public Long getIdMetier() {
         return idMetier;
     }

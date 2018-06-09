@@ -26,6 +26,11 @@ public class Professeur extends Model {
         Expression expr = Expr.eq("login", login);
         return find.where().add(expr).findUnique();
     }
+    
+    public static Professeur getProfesseurById(Long id_professeur){
+        Expression expr = Expr.eq("id_professeur", id_professeur);
+        return find.where().add(expr).findUnique();
+    }
 
     public Long getId_professeur() {
         return id_professeur;

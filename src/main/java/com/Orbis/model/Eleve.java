@@ -27,6 +27,11 @@ public class Eleve extends Model {
         Expression expr = Expr.eq("login", login);
         return find.where().add(expr).findUnique();
     }
+    
+    public static Eleve getEleveById(long id_eleve) {
+    	Expression expr = Expr.eq("id_eleve", id_eleve);
+    	return find.where().add(expr).findUnique();
+    }
 
     public Long getId_eleve() {
 		return id_eleve;
