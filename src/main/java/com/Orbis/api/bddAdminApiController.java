@@ -1,5 +1,6 @@
 package com.Orbis.api;
 
+import com.Orbis.model.Admin;
 import com.Orbis.model.Concept;
 import com.Orbis.model.Domaine;
 import com.Orbis.model.Eleve;
@@ -32,7 +33,7 @@ public class bddAdminApiController implements bddAdminApi{
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
-    public ResponseEntity<Void> deleteDomaine(@ApiParam(value = "Id du Domaine à supprimer" ,required=true) @RequestBody long id){
+    public ResponseEntity<Void> deleteDomaine(@ApiParam(value = "Id du Domaine à supprimer" ,required=true) @RequestBody Long id){
     	Domaine domaine = Domaine.getDomaineById(id);
     	domaine.delete();
     	return new ResponseEntity<>(HttpStatus.OK);
@@ -52,13 +53,11 @@ public class bddAdminApiController implements bddAdminApi{
     }
     
     public ResponseEntity<Void> addEleve(@ApiParam(value = "Eleve à ajouter" ,required=true) @RequestBody Eleve eleve){
-    	System.out.println("test");
-    	System.out.println(eleve.getId_eleve() + " " + eleve.getLogin() + " " + eleve.getMdp());
-    	//eleve.insert();
+    	eleve.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
-    public ResponseEntity<Void> deleteEleve(@ApiParam(value = "Id de l'Eleve à supprimer" ,required=true) @RequestBody long id){
+    public ResponseEntity<Void> deleteEleve(@ApiParam(value = "Id de l'Eleve à supprimer" ,required=true) @RequestBody Long id){
     	Eleve eleve = Eleve.getEleveById(id);
     	eleve.delete();
     	return new ResponseEntity<>(HttpStatus.OK);
@@ -68,6 +67,30 @@ public class bddAdminApiController implements bddAdminApi{
     	Eleve oldEleve = Eleve.getEleveById(eleve.getId_eleve());
     	oldEleve.delete();
     	eleve.insert();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    
+    /************ Admin ***************/
+    public ResponseEntity<List<Admin>> getAllAdmins(){
+    	return new ResponseEntity<>(Admin.find.all(), HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> addAdmin(@ApiParam(value = "Admin à ajouter" ,required=true) @RequestBody Admin admin){
+    	admin.insert();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> deleteAdmin(@ApiParam(value = "Id de l'Admin à supprimer" ,required=true) @RequestBody Long id){
+    	Admin admin = Admin.getAdminById(id);
+    	admin.delete();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> modifyAdmin(@ApiParam(value = "Admin à modifier" ,required=true) @RequestBody Admin admin){
+    	Admin oldAdmin = Admin.getAdminById(admin.getId_admin());
+    	oldAdmin.delete();
+    	admin.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
@@ -82,7 +105,7 @@ public class bddAdminApiController implements bddAdminApi{
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
-    public ResponseEntity<Void> deleteParcours(@ApiParam(value = "Id du parcours à supprimer" ,required=true) @RequestBody long id){
+    public ResponseEntity<Void> deleteParcours(@ApiParam(value = "Id du parcours à supprimer" ,required=true) @RequestBody Long id){
     	Parcours parcours = Parcours.getParcoursById(id);
     	parcours.delete();
     	return new ResponseEntity<>(HttpStatus.OK);
@@ -106,7 +129,7 @@ public class bddAdminApiController implements bddAdminApi{
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
-    public ResponseEntity<Void> deletePrerequis(@ApiParam(value = "Id du prerequis à supprimer" ,required=true) @RequestBody long id){
+    public ResponseEntity<Void> deletePrerequis(@ApiParam(value = "Id du prerequis à supprimer" ,required=true) @RequestBody Long id){
     	Prerequis prerequis = Prerequis.getPrerequisById(id);
     	prerequis.delete();
     	return new ResponseEntity<>(HttpStatus.OK);
@@ -130,7 +153,7 @@ public class bddAdminApiController implements bddAdminApi{
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
-    public ResponseEntity<Void> deletePrerequisParcours(@ApiParam(value = "Id du prerequisParcours à supprimer" ,required=true) @RequestBody long id){
+    public ResponseEntity<Void> deletePrerequisParcours(@ApiParam(value = "Id du prerequisParcours à supprimer" ,required=true) @RequestBody Long id){
     	PrerequisParcours prerequisParcours = PrerequisParcours.getPrerequisParcoursById(id);
     	prerequisParcours.delete();
     	return new ResponseEntity<>(HttpStatus.OK);
@@ -146,7 +169,7 @@ public class bddAdminApiController implements bddAdminApi{
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
-    public ResponseEntity<Void> deleteConcept(@ApiParam(value = "Id du concept à supprimer" ,required=true) @RequestBody long id){
+    public ResponseEntity<Void> deleteConcept(@ApiParam(value = "Id du concept à supprimer" ,required=true) @RequestBody Long id){
     	Concept concept = Concept.getConceptById(id);
     	concept.delete();
     	return new ResponseEntity<>(HttpStatus.OK);

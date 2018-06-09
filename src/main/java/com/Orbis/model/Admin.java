@@ -27,6 +27,11 @@ public class Admin extends Model {
         Expression expr = Expr.eq("login", login);
         return find.where().add(expr).findUnique();
     }
+    
+    public static Admin getAdminById(Long id){
+        Expression expr = Expr.eq("id_admin", id);
+        return find.where().add(expr).findUnique();
+    }
 
     public Long getId_admin() {
         return id_admin;

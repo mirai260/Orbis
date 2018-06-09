@@ -36,33 +36,16 @@ function initialisation(){
 		table += "</table>"
 		document.getElementById("bdd").innerHTML += table;
 	}
-	
+
 	getAllData();
 }
 
-function ajouter(table, nbr_colonnes){
-	var data = {};
-	for (i = 0; i < nbr_colonnes; i++){
-		data[tables[table].colonnes[i]] = document.getElementById("table" + table + "_colonne" + i).value;
-		console.log(document.getElementById("table" + table + "_colonne" + i).value);
-	}
-	console.log(data);
-	
-	var url = "http://localhost:8080/api/add" + tables[table].nom;
-	var type="POST";
-	$.ajax({
-			type : type,
-			url : url, 
-			data : JSON.stringify(data),
-			headers : {"Content-Type": "application/json"}
-	})
-}
+
 
 function getAllData(){
 	for (i in tables){
 		getData(i);
 	}
-	//emptyTable(2)
 }
 
 function getData(i){
@@ -93,19 +76,57 @@ function getData(i){
 }
 
 function emptyTable(i){
-	document.getElementById("table" + i).innerHTML = "";
+	table = "<tr>";
+	for (j in tables[i].colonnes){
+		table += "<th>" + tables[i].colonnes[j] + "</th>";
+	}
+	table += "</tr>";
+	table += "<tr>";
+	for (j in tables[i].colonnes){
+		if (j == 0)
+			table += "<td>" + "<input type='text' id='table" + i + "_colonne" + j + "' disabled/>" + "</td>";
+		else
+			table += "<td>" + "<input type='text' id='table" + i + "_colonne" + j + "'/>" + "</td>";
+	}
+	table += "<td>" + "<input type='submit' value='Ajouter' onclick='ajouter(" + i + ", " + tables[i].colonnes.length + ")'/>" + "</td>";
+	table += "</tr>";
+	document.getElementById("table" + i).innerHTML = table;
 }
 
 function supprimer(table, id){
 	var url = "http://localhost:8080/api/delete" + tables[table].nom;
 	var type="DELETE";
-	var data = {id : id};
+	var data="" + id;
 	$.ajax({
 			type : type,
 			url : url, 
+			data : data,
+			async : false,
+			headers : {"Content-Type": "application/json"}
+	})
+	emptyTable(table);
+	getData(table);
+}
+function ajouter(table, nbr_colonnes){
+	var data = {};
+	for (i = 0; i < nbr_colonnes; i++){
+		data[tables[table].colonnes[i]] = document.getElementById("table" + table + "_colonne" + i).value;
+		console.log(document.getElementById("table" + table + "_colonne" + i).value);
+	}
+	console.log(data);
+	
+	var url = "http://localhost:8080/api/add" + tables[table].nom;
+	console.log(url);
+	var type="POST";
+	$.ajax({
+			type : type,
+			url : url,
+			async : false,
 			data : JSON.stringify(data),
 			headers : {"Content-Type": "application/json"}
 	})
+	emptyTable(table);
+	getData(table);
 }
 
 $('document').ready(initialisation());
