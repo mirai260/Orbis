@@ -26,7 +26,7 @@ public interface MetierApi {
     @RequestMapping(value = "api/getMetiersByDomaine",
             produces = { "application/json" },
             method = RequestMethod.POST /*méthode d'accès à l'api*/)
-    ResponseEntity<List<Metier>/*type de retour*/> getMetierByDomaine(
+    ResponseEntity<List<Metier>/*type de retour*/> getMetiersByDomaine(
     		 @ApiParam(value = "Nom du domaine" ,required=true )
              @RequestBody String/*type de paramètre*/ domaine    //Paramètre passé en POST (données de formulaire)
              );

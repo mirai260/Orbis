@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiParam;
 public class MetierApiController implements MetierApi {
 
 	@Override
-	public ResponseEntity<List<Metier>> getMetierByDomaine(
+	public ResponseEntity<List<Metier>> getMetiersByDomaine(
 			@ApiParam(value = "Nom du domaine" ,required=true )
 			@RequestBody String/*type de paramètre*/ domaine    //Paramètre passé en POST (données de formulaire)
     ){

@@ -19,7 +19,7 @@ public class Metier {
 	@Id
     @GeneratedValue
     @ApiModelProperty(hidden = true)
-    private Long idMetier;
+    private Long id_metier;
 	
 	private String nom;
 	private String description;
@@ -37,16 +37,16 @@ public class Metier {
     }
 	
 	public static Metier getMetierById(Long id){
-		Expression e1 = Expr.eq("idMetier", id);
+		Expression e1 = Expr.eq("id_metier", id);
         return find.where().add(e1).findUnique();
     }
 	
 	public Long getIdMetier() {
-        return idMetier;
+        return id_metier;
     }
 
     public void setIdMetier(Long idMetier) {
-        this.idMetier = idMetier;
+        this.id_metier = idMetier;
     }
 
     public String getNom() {
