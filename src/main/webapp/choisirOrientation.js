@@ -62,7 +62,7 @@ $(document).ready(function(){
 		$.ajax({
 				url: 'api/getMetiersByDomaine', 
 				type: 'POST',
-				data: "domaine="+dom,
+				data: dom,
 				success: function(data) {
 					console.log("coucou");
 					metiers = data;
@@ -78,6 +78,14 @@ $(document).ready(function(){
 			console.log(data);
 			for(i in domainesCD) {
 				$("#Cdésire").append('<input type="checkbox" id="Cdesire'+domainesCD[i].nom+'" name="Cdesire'+domainesCD[i].nom+'" value="Cdesire'+domainesCD[i].nom+'">'+domainesCD[i].nom+'<br>');
+			}
+		});
+		var domainesCA;
+		$.get('api/getAllPrerequis', function(data) {
+			domainesCA = data;
+			$("#Cacquise").append('<div class="skillLevel"><label>Java</label><input type="checkbox" id="CacquiseJava" name="CacquiseJava" value="Java" onclick=notation(this.value)><p id="Java"></p></div>');
+			for(i in domainesCA) {
+				$("#Cacquise").append('<div class="skillLevel"><label>Java</label><input type="checkbox" id="Cacquise'+domainesCA[i].nom+'" name="Cacquise'+domainesCA[i].nom+'" value="'+domainesCA[i].nom+'" onclick=notation(this.value)><p id="'+domainesCA[i].nom+'"></p></div> ');
 			}
 		});
 	});
