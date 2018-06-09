@@ -13,7 +13,6 @@ import java.util.List;
 @Controller
 public class ParcoursApiController implements ParcoursApi{
 
-
     @Override
     public ResponseEntity<List<Parcours>/*type de retour*/> getParcoursWithPrerequis(
             @ApiParam(value = "liste de prérequis", required = true)
@@ -21,14 +20,30 @@ public class ParcoursApiController implements ParcoursApi{
     ){
         List<Parcours> parcours = Parcours.find.where()
                 .notIn(
-                    "idParcours",
-                    PrerequisParcours.find.select("idParcours").where()
+                    "id_parcours",
+                    PrerequisParcours.find.select("id_parcours").where()
                             .notIn(
-                                    "idPrerequis",
+                                    "id_prerequis",
                                     listePrerequis)
                             .setDistinct(true))
                 .findList();
         return new ResponseEntity<>(parcours, HttpStatus.OK);
     }
 
+	@Override
+	public ResponseEntity<List<Parcours>/*type de retour*/> getParcoursByMetiers(
+            @ApiParam(value = "liste des ids des métiers", required = true)
+            @RequestBody List<Long>/*type de paramètre*/ listeMetiers    //Paramètre passé en POST (données de formulaire)
+    ){
+        List<Parcours> parcours = Parcours.find.where()
+                .notIn(
+                    "id_metier",
+                    PrerequisParcours.find.select("id_metier").where()
+                            .notIn(
+                                    "id_metier",
+                                    listeMetiers)
+                            .setDistinct(true))
+                .findList();
+        return new ResponseEntity<>(parcours, HttpStatus.OK);
+    }
 }

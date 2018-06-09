@@ -18,8 +18,8 @@ public class PrerequisParcours extends Model{
     @ApiModelProperty(hidden = true)
     private Long id_prerequis_parcours;
 
-    private Long idPrerequis;
-    private Long idParcours;
+    private Long id_prerequis;
+    private Long id_parcours;
 
 
     public static Model.Find<Long, PrerequisParcours> find = new Model.Find<Long, PrerequisParcours>() {};  // Outil de recherche dans la bdd
@@ -38,18 +38,18 @@ public class PrerequisParcours extends Model{
     }
 
     public Long getIdPrerequis() {
-        return idPrerequis;
+        return id_prerequis;
     }
 
     public void setIdPrerequis(Long idPrerequis) {
-        this.idPrerequis = idPrerequis;
+        this.id_prerequis = idPrerequis;
     }
 
     public Long getIdParcours() {
-        return idParcours;
+        return id_parcours;
     }
 
     public void setIdParcours(Long idParcours) {
-        this.idParcours = idParcours;
+        this.id_parcours = idParcours;
     }
 }
