@@ -142,14 +142,14 @@ public interface bddAdminApi {
     
     
     /************ Prerequis ****************/
-    @ApiOperation(value = "Récupérer tout les prerequis", notes = "", response = Void.class, tags={ "administration", })
+    /*@ApiOperation(value = "Récupérer tout les prerequis", notes = "", response = Void.class, tags={ "administration", })
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = Void.class)
     })
     @RequestMapping(value = "api/getAllPrerequis",
             produces = { "application/json" },
             method = RequestMethod.GET)
-    ResponseEntity<List<Prerequis>> getAllPrerequis();
+    ResponseEntity<List<Prerequis>> getAllPrerequis();*/
     
     @ApiOperation(value = "Ajouter un Prerequis", notes = "", response = Void.class, tags={ "administration", })
     @ApiResponses(value = {

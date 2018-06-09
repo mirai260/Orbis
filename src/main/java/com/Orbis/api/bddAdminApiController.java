@@ -96,9 +96,9 @@ public class bddAdminApiController implements bddAdminApi{
     
     
     /************ Prerequis ****************/
-    public ResponseEntity<List<Prerequis>> getAllPrerequis(){
+    /*public ResponseEntity<List<Prerequis>> getAllPrerequis(){
     	return new ResponseEntity<>(Prerequis.find.all(), HttpStatus.OK);
-    }
+    }*/
     
     public ResponseEntity<Void> addPrerequis(@ApiParam(value = "Domaine à ajouter" ,required=true) @RequestBody Prerequis prerequis){
     	prerequis.insert();
