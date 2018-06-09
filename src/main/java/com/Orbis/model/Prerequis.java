@@ -3,6 +3,8 @@ package com.Orbis.model;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,7 +26,9 @@ public class Prerequis extends Model{
     
     public static Model.Find<Long, Prerequis> find = new Model.Find<Long, Prerequis>() {};  // Outil de recherche dans la bdd
     
-    
+    public static List<Prerequis> getAllPrerequis() {
+    	return find.all();
+    }
 
     public Long getIdParcours() {
         return idParcours;
