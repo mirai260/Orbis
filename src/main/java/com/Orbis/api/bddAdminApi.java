@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.Orbis.model.Admin;
 import com.Orbis.model.Concept;
 import com.Orbis.model.Domaine;
 import com.Orbis.model.Eleve;
@@ -50,7 +51,7 @@ public interface bddAdminApi {
     @RequestMapping(value = "api/deleteDomaine",
             produces = { "application/json" },
             method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteDomaine(@ApiParam(value = "Id du Domaine à supprimer" ,required=true) @RequestBody long id);
+    ResponseEntity<Void> deleteDomaine(@ApiParam(value = "Id du Domaine à supprimer" ,required=true) @RequestBody Long id);
     
     
     @ApiOperation(value = "Modifier un domaine", notes = "", response = Void.class, tags={ "administration", })
@@ -92,7 +93,7 @@ public interface bddAdminApi {
     @RequestMapping(value = "api/deleteEleve",
             produces = { "application/json" },
             method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteEleve(@ApiParam(value = "Id de l'Eleve à supprimer" ,required=true) @RequestBody long id);
+    ResponseEntity<Void> deleteEleve(@ApiParam(value = "Id de l'Eleve à supprimer" ,required=true) @RequestBody Long id);
     
     @ApiOperation(value = "Modifier un Eleve", notes = "", response = Void.class, tags={ "administration", })
     @ApiResponses(value = {
@@ -102,6 +103,46 @@ public interface bddAdminApi {
             produces = { "application/json" },
             method = RequestMethod.PUT)
     ResponseEntity<Void> modifyEleve(@ApiParam(value = "Eleve à modifier" ,required=true) @RequestBody Eleve eleve);
+    
+    
+    /************ Admin ***************/
+    @ApiOperation(value = "Récupérer tout les Admins", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = Void.class)
+    })
+    @RequestMapping(value = "api/getAllAdmin",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<List<Admin>> getAllAdmins();
+    
+    @ApiOperation(value = "Ajouter un Admin", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ajout effectué", response = Void.class),
+            
+    })
+    @RequestMapping(value = "api/addAdmin",
+            produces = { "application/json" },
+            method = RequestMethod.POST)
+    ResponseEntity<Void> addAdmin(@ApiParam(value = "Admin à ajouter" ,required=true) @RequestBody Admin admin);
+    
+    
+    @ApiOperation(value = "Supprimer un Admin", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Supression effectué", response = Void.class)
+    })
+    @RequestMapping(value = "api/deleteAdmin",
+            produces = { "application/json" },
+            method = RequestMethod.DELETE)
+    ResponseEntity<Void> deleteAdmin(@ApiParam(value = "Id de l'Admin à supprimer" ,required=true) @RequestBody Long id);
+    
+    @ApiOperation(value = "Modifier un Admin", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "modification effectué", response = Void.class)
+    })
+    @RequestMapping(value = "api/modifyAdmin",
+            produces = { "application/json" },
+            method = RequestMethod.PUT)
+    ResponseEntity<Void> modifyAdmin(@ApiParam(value = "Admin à modifier" ,required=true) @RequestBody Admin admin);
     
     
     /************* Parcours ***************/
@@ -130,7 +171,7 @@ public interface bddAdminApi {
     @RequestMapping(value = "api/deleteParcours",
             produces = { "application/json" },
             method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteParcours(@ApiParam(value = "Id du parcours à supprimer" ,required=true) @RequestBody long id);
+    ResponseEntity<Void> deleteParcours(@ApiParam(value = "Id du parcours à supprimer" ,required=true) @RequestBody Long id);
     
     @ApiOperation(value = "Modifier un Parcours", notes = "", response = Void.class, tags={ "administration", })
     @ApiResponses(value = {
@@ -168,7 +209,7 @@ public interface bddAdminApi {
     @RequestMapping(value = "api/deletePrerequis",
             produces = { "application/json" },
             method = RequestMethod.DELETE)
-    ResponseEntity<Void> deletePrerequis(@ApiParam(value = "Id du Prerequis à supprimer" ,required=true) @RequestBody long id);
+    ResponseEntity<Void> deletePrerequis(@ApiParam(value = "Id du Prerequis à supprimer" ,required=true) @RequestBody Long id);
     
     @ApiOperation(value = "Modifier un Prerequis", notes = "", response = Void.class, tags={ "administration", })
     @ApiResponses(value = {
@@ -206,7 +247,7 @@ public interface bddAdminApi {
     @RequestMapping(value = "api/deletePrerequisParcours",
             produces = { "application/json" },
             method = RequestMethod.DELETE)
-    ResponseEntity<Void> deletePrerequisParcours(@ApiParam(value = "Id du prerequis_parcours à supprimer" ,required=true) @RequestBody long id);
+    ResponseEntity<Void> deletePrerequisParcours(@ApiParam(value = "Id du prerequis_parcours à supprimer" ,required=true) @RequestBody Long id);
     
     
     /************ Concept **************/
@@ -237,7 +278,7 @@ public interface bddAdminApi {
     @RequestMapping(value = "api/deleteConcept",
             produces = { "application/json" },
             method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteConcept(@ApiParam(value = "Id du concept à supprimer" ,required=true) @RequestBody long id);
+    ResponseEntity<Void> deleteConcept(@ApiParam(value = "Id du concept à supprimer" ,required=true) @RequestBody Long id);
     
     @ApiOperation(value = "Modifier un concept", notes = "", response = Void.class, tags={ "administration", })
     @ApiResponses(value = {

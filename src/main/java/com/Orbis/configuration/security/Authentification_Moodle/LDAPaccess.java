@@ -53,6 +53,7 @@ public class LDAPaccess implements Serializable
 			// Hashtable for environmental information
 			Hashtable<String, String> env = new Hashtable<String, String>();
 
+			env.put("com.sun.jndi.ldap.connect.timeout", "500");
 			// Specify which class to use for our JNDI provider
 			env.put(Context.INITIAL_CONTEXT_FACTORY, INITCTX);
 

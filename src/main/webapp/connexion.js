@@ -1,29 +1,39 @@
-var identifiant = $("#user").val();
-var mdp = $("#mdp").val();
-var result;
 
 
-$(document).ready(function(){
+console.log("test");
 
-    $("#submit").click(function{
-
-        $.post(
-            'api/', {identifiant: identifiant,mdp: mdp}, function(result) 
-
-            if(result==405) {
-                alert("Nom d'utilisateur ou mot de passe erroné.");
-            }
-            elseif(result==200){
-
-                sessionStorage.setitem("token", result)
-            }
-
-
-
-         );
-
-    });
-
-});
+function signin(){
+	var username = $("#login").val();
+	var password = $("#mdp").val();
+	$("body").css("cursor", "progress");
+	$("#submit").hide();
+	$("#login").prop("disabled", true);
+	$("#mdp").prop("disabled", true);
+	$.ajax({
+		url: "http://localhost:8080/oauth/token",
+		type: 'POST',
+		headers: {
+			"Authorization":"Basic T3JiaXM6b3JiaXM=",
+			"Content-Type":"application/x-www-form-urlencoded; charset=utf-8"
+		},
+		data: 'grant_type=password&username=' + username + '&password=' + password,
+		success: function(result,status,xhr) {
+			//$("body").css("cursor", "default");
+			if (status == "success"){
+				sessionStorage.setItem('token', result.access_token);
+				$("body").css("cursor", "default");
+				window.location.href = "pageAcceuil.html";
+			}
+		},
+		error: function(xhr,status,error) {
+			$("#submit").show();
+			$("#login").prop("disabled", false);
+			$("#mdp").prop("disabled", false);
+			$("#mdp").val("");
+			$("#error").html("Identifiant ou mot de passe incorrect");
+			$("body").css("cursor", "default");
+		}
+	});
+}
 
 
