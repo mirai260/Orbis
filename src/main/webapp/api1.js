@@ -41,48 +41,45 @@ $(document).ready(function(){
 		});
 	});
 	$("#fromMetier button.validation").click(function() {
+		$("#APIParcours").empty();
 		var listeMetiers = [];
 		var parcours;
 		var metier = parseInt($("#APIMetier option:selected").val());
-		console.log(metier);
 		listeMetiers.push(metier);
 		console.log(listeMetiers);
 		$.ajax({
 			url: 'api/getParcoursByMetiers', 
 			type: 'POST',
-			data: listeMetiers,
+			data: JSON.stringify(listeMetiers),
 			success: function(data) {
 				parcours = data;
 				for(i in parcours) {
 					console.log(parcours[i]);
-					$("#APIParcours").append('<option value='+parcours[i].nom+'>'+parcours[i].nom+'</option>');
+					$("#APIParcours").append('<li class="parcour"><h2>'+parcours[i].nom+'</h2><div class="hide">'+parcours[i].description+'</div></li>');
 				}
+				$(".accordeon .parcour").each(function() {
+					$(this).find("h2").click(function() {
+						$(".accordeon .parcours").find("div").each(function() {
+							if(!$(this).parent().find("div").hasClass("hide")) {
+								$(this).parent().find("div").addClass("hide");
+							}
+							$(this).slideUp(200);
+						});
+						if($(this).parent().find("div").hasClass("hide")) {
+							$(this).parent().find("div").removeClass("hide");
+							$(this).parent().find("div").slideDown(200);
+						}
+						else {
+							$(this).parent().find("div").addClass("hide");
+							$(this).parent().find("div").slideUp(200);
+						}
+					});
+				});
 			},
 			contentType: "application/json; charset=utf-8",
 			dataType: 'json'
 		});
 	});
 });
-
-
-//var metier;
-//$.post('api/getMetiersByDomaine',$('#domaine').text(), function(data) {
-//	metier = data;
-//});
-//$(document).ready(function(){
-//	for(i in metier) {
-//		$("#APIMetier").append('<input type="radio" name="metier" value='+metier[i].name+' checked>' +metier[i].name+ '<br>');
-//	}
-//});
-//
-//var parcour;
-//$.post('api/getParcoursWithPrerequis',$('#metier').text(), function(data) {
-//	parcour = data;
-//});
-//$(document).ready(function(){
-//	for(i in parcour) {
-//		$("#APIParcour").append('<button class="accordion">' +parcour[i].name +'</button><div class="panel"><p>'+parcour[i].description+'</p></div>');
-//	}
-//});
 
 $( "#footer" ).load( "http://localhost:8080/Footer.html" );

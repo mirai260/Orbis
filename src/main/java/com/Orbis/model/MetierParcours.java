@@ -6,6 +6,9 @@ import com.avaje.ebean.Expression;
 import com.avaje.ebean.Model;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,6 +27,16 @@ public class MetierParcours extends Model{
 
     public static Model.Find<Long, MetierParcours> find = new Model.Find<Long, MetierParcours>() {};  // Outil de recherche dans la bdd
 
+//    public static List<Long> getIdParcoursByMetier(Long idMetier){
+//		List<Long> res = new ArrayList<>();
+//		Expression e1 = Expr.eq("id_metier", idMetier);
+//		List<MetierParcours> list = find.where().add(e1).findList();
+//		for(MetierParcours md : list) {
+//			res.add(md.id_metier);
+//		}
+//        return res;
+//    }
+    
     public static MetierParcours getMetiersParcoursById(Long id_metier_parcours){
 		Expression expr = Expr.eq("id_metier_parcours", id_metier_parcours);
 		return find.where().add(expr).findUnique();
