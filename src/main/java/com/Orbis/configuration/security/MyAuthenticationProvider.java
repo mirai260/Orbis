@@ -18,6 +18,10 @@ import com.Orbis.model.Admin;
 import com.Orbis.model.Eleve;
 import com.Orbis.model.Professeur;
 
+
+
+
+
 /**
  * Created by lyriaaw on 15/12/16.
  */
@@ -30,9 +34,32 @@ public class MyAuthenticationProvider implements org.springframework.security.au
         String login = authentication.getName();
         String password = authentication.getCredentials().toString();
         
+
+		Eleve eleve = Eleve.getEleveByLogin(login);
+        if (eleve != null && BCrypt.checkpw(password, eleve.getMdp())){
+        	List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
+	        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
+			return new UsernamePasswordAuthenticationToken(eleve.getLogin(), eleve.getMdp(), grantedAuthorityList);
+        }
+        Professeur professeur = Professeur.getProfesseurByLogin(login);
+        if (professeur != null && BCrypt.checkpw(password, professeur.getMdp())){
+        	List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
+	        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_PROFESSEUR"));
+			return new UsernamePasswordAuthenticationToken(professeur.getLogin(), professeur.getMdp(), grantedAuthorityList);
+        }
+        Admin admin = Admin.getAdminByLogin(login);
+        if (admin != null && BCrypt.checkpw(password, admin.getMdp())){
+        	List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
+	        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+			return new UsernamePasswordAuthenticationToken(admin.getLogin(), admin.getMdp(), grantedAuthorityList);
+        }
+        
+        
     	LDAPaccess access = new LDAPaccess();
 		try {
+			System.out.println("test");
 			LDAPObject test = access.LDAPget(login, password); // remplacez login par la variable qui contient le login, et mdp par la variable qui contient le mot de passe
+			System.out.println("test");
 			if (test != null)
 			{
 				List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
@@ -42,24 +69,6 @@ public class MyAuthenticationProvider implements org.springframework.security.au
 		} catch(Exception e) {
 			System.out.println(e);
 		}
-		Eleve eleve = Eleve.getEleveByLogin(login);
-        if (eleve != null && !BCrypt.checkpw(password, eleve.getMdp())){
-        	List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-	        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
-			return new UsernamePasswordAuthenticationToken(eleve.getLogin(), eleve.getMdp(), grantedAuthorityList);
-        }
-        Professeur professeur = Professeur.getProfesseurByLogin(login);
-        if (professeur != null && !BCrypt.checkpw(password, professeur.getMdp())){
-        	List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-	        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_PROFESSEUR"));
-			return new UsernamePasswordAuthenticationToken(professeur.getLogin(), professeur.getMdp(), grantedAuthorityList);
-        }
-        Admin admin = Admin.getAdminByLogin(login);
-        if (admin != null && !BCrypt.checkpw(password, admin.getMdp())){
-        	List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-	        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-			return new UsernamePasswordAuthenticationToken(admin.getLogin(), admin.getMdp(), grantedAuthorityList);
-        }
     	
 
         /*

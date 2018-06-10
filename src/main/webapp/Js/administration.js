@@ -62,11 +62,16 @@ function getData(i){
 				for (j in data){
 					html += "<tr>";
 					for (c in tables[i].colonnes){
-						html += "<td>" + data[j][tables[i].colonnes[c]] + "</td>";
+						if (c == 0){
+							html += "<td>" + data[j][tables[i].colonnes[c]] + "</td>";
+						}
+						else{
+							html += "<td id='table" + i + "_ligne" + j + "_colonne" + c + "'>" + data[j][tables[i].colonnes[c]] + "</td>";
+						}
 					}
 					html += "<td>" +
-							"<a><img src='images/edit.ico' height='20'/></a>" +
-							"<a href='#'><img src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
+							"<a><img src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
+							"<a><img src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
 							"</td>";
 					html += "</tr>";
 				}
@@ -92,6 +97,17 @@ function emptyTable(i){
 	table += "</tr>";
 	document.getElementById("table" + i).innerHTML = table;
 }
+
+function showEdit(table, row){
+	for (c in tables[table].colonnes){
+		if (c != 0){
+			document.getElementById("table" + table + "_ligne" + row + "_colonne" + c).innerHTML = "<input type='text' value='" + document.getElementById("table" + table + "_ligne" + row + "_colonne" + c).innerHTML + "'/>";
+		}
+	}
+}
+
+
+
 
 function supprimer(table, id){
 	var url = "http://localhost:8080/api/delete" + tables[table].nom;

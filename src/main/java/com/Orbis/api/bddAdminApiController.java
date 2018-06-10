@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiParam;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -53,6 +54,8 @@ public class bddAdminApiController implements bddAdminApi{
     }
     
     public ResponseEntity<Void> addEleve(@ApiParam(value = "Eleve à ajouter" ,required=true) @RequestBody Eleve eleve){
+    	eleve.setMdp(BCrypt.hashpw(eleve.getMdp(), BCrypt.gensalt()));
+    	System.out.println(BCrypt.hashpw(eleve.getMdp(), BCrypt.gensalt()));
     	eleve.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
