@@ -28,26 +28,6 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-/*function metier(){
-	var domainesMetier;
-	$.post('api/getDomainesMetier', function(data) {
-		domainesMetier = data;
-		for(i in domainesMetier) {
-			$("#metier").append('<option value='+domainesMetier[i].name+'>'+domainesMetier[i].name+'</option>');
-		}
-	});
-}*/
-
-/*function competanceDésire(){
-	var domainesCD;
-	$.post('api/getDomainesCD', function(data) {
-		domainesCD = data;
-		for(i in domainesMetier) {
-			$("#Cdésire").append('<label>'+domainesCD[i].name+'</label><input type="checkbox" name="Cfavorite" value='+domainesCD[i].name+'>');
-		}
-	});
-}*/
-
 $(document).ready(function(){
 	var domaines;
 	var metiers;
@@ -67,29 +47,61 @@ $(document).ready(function(){
 					console.log("coucou");
 					metiers = data;
 					for(i in metiers) {
-						$("#APIMetier").append('<option value='+metiers[i].nom+'>'+metiers[i].nom+'</option>');
+						$("#APIMetier").append('<option value='+metiers[i].idMetier+'>'+metiers[i].nom+'</option>');
 					}
 				},
 				contentType: "application/json; charset=utf-8",
 		});
-		var domainesCD;
-		$.post('api/getAllConcepts', function(data) {
-			domainesCD = data;
-			console.log(data);
-			for(i in domainesCD) {
-				$("#Cdésire").append('<input type="checkbox" id="Cdesire'+domainesCD[i].nom+'" name="Cdesire'+domainesCD[i].nom+'" value="Cdesire'+domainesCD[i].nom+'">'+domainesCD[i].nom+'<br>');
-			}
-		});
-		var domainesCA;
-		$.get('api/getAllPrerequis', function(data) {
-			domainesCA = data;
-			$("#Cacquise").append('<div class="skillLevel"><label>Java</label><input type="checkbox" id="CacquiseJava" name="CacquiseJava" value="Java" onclick=notation(this.value)><p id="Java"></p></div>');
-			for(i in domainesCA) {
-				$("#Cacquise").append('<div class="skillLevel"><label>Java</label><input type="checkbox" id="Cacquise'+domainesCA[i].nom+'" name="Cacquise'+domainesCA[i].nom+'" value="'+domainesCA[i].nom+'" onclick=notation(this.value)><p id="'+domainesCA[i].nom+'"></p></div> ');
-			}
+	});
+	var domainesCD;
+	$.post('api/getAllConcepts', function(data) {
+		domainesCD = data;
+		console.log(data);
+		for(i in domainesCD) {
+			$("#Cdésire").append('<input type="checkbox" id="Cdesire'+domainesCD[i].nom+'" name="Cdesire'+domainesCD[i].nom+'" value="Cdesire'+domainesCD[i].nom+'">'+domainesCD[i].nom+'<br>');
+		}
+	});
+	var domainesCA;
+	$.get('api/getAllPrerequis', function(data) {
+		domainesCA = data;
+//		$("#Cacquise").append('<div class="skillLevel"><label>Java</label><input type="checkbox" id="CacquiseJava" name="CacquiseJava" value="Java" onclick=notation(this.value)><p id="Java"></p></div>');
+		for(i in domainesCA) {
+			$("#Cacquise").append('<div class="skillLevel"><label>Java</label><input type="checkbox" id="Cacquise'+domainesCA[i].nom+'" name="Cacquise'+domainesCA[i].nom+'" value="'+domainesCA[i].nom+'" onclick=notation(this.value)><p id="'+domainesCA[i].nom+'"></p></div> ');
+		}
+	});
+	// A modifier
+	$(".typeRecherche button.validation").click(function() {
+		$("#APIParcours").empty();
+		var listeMetiers = [];
+		var parcours;
+		var metier = parseInt($("#APIMetier option:selected").val());
+		listeMetiers.push(metier);
+		console.log(listeMetiers);
+		$.ajax({
+			url: 'api/getParcoursByMetiers', 
+			type: 'POST',
+			data: JSON.stringify(listeMetiers),
+			success: function(data) {
+				parcours = data;
+				for(i in parcours) {
+					console.log(parcours[i]);
+					$("#APIParcours").append('<li class="parcour"><h2>'+parcours[i].nom+'</h2><div class="hide">'+parcours[i].description+'</div></li>');
+				}
+				$(".accordeon .parcour").each(function() {
+					$(this).find("h2").click(function() {
+						if($(this).parent().find("div").is(":hidden")) {
+							$(this).parent().find("div").slideDown(200);
+						}
+						else {
+							$(this).parent().find("div").slideUp(200);
+						}
+					});
+				});
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json'
 		});
 	});
-	
 });
 
 function listMetier(){
