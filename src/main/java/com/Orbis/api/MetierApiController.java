@@ -17,9 +17,9 @@ public class MetierApiController implements MetierApi {
 	@Override
 	public ResponseEntity<List<Metier>> getMetiersByDomaine(
 			@ApiParam(value = "Nom du domaine" ,required=true )
-			@RequestBody String/*type de paramètre*/ domaine    //Paramètre passé en POST (données de formulaire)
+			@RequestBody String domaine
     ){
-		System.out.println(domaine);
+//		System.out.println(domaine);
 		List<Metier> metiers = Metier.getMetierByDomaine(domaine);
         return new ResponseEntity<>(metiers, HttpStatus.OK);
 	}

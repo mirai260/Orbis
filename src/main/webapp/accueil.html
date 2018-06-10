@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Page d'acceuil</title>
-<link rel="stylesheet" href="acceuil.css" />
+<link rel="stylesheet" href="accueil.css" />
 <link rel="stylesheet" href="menuAccordéon.css" />
-
 </head>
 	<body id="body">
 		<a href="./connexion.html">Se connecter</a>
@@ -13,23 +12,24 @@
 			<h1 id="titre">Orbis</h1>
 			<h2>Votre réference pour l'orientation</h2>
 			<p>Veuillez choisir le métier qui vous intéresse et nous vous conseillerons les parcours correspondant:</p>
+			
 			<select name="domaine" id="domaine">
 				<!-- Retour API Domaine -->
 			</select>
 			  
-			<form id="fromMetier" method="POST">
-				<div id="APIMetier"></div>
-				<div><input type="submit"></div>
-			</form>
+			<div id="fromMetier">
+				<select id="APIMetier">
+					<!-- Retour API Métier -->
+				</select>
+				<button class="validation">Valider</button>
+			</div>
 			
-			<div id="APIParcours"></div>
-			
+			<ul id="APIParcours" class="accordeon">
+				<!-- Retour API Parcours -->
+			</ul>
 		</div>
 		<footer id="footer"></footer>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="api1.js"></script>
-		<script src="domaine.js"></script>
-		<script src="menuAccordéon.js"></script>
 	</body>
-	
 </html>

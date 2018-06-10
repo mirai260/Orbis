@@ -11,6 +11,13 @@ create table concept (
   constraint pk_concept primary key (id_concept)
 );
 
+create table concept_parcours (
+  id_concept_parcours           bigint auto_increment not null,
+  id_concept                    bigint,
+  id_parcours                   bigint,
+  constraint pk_concept_parcours primary key (id_concept_parcours)
+);
+
 create table domaine (
   id_domaine                    bigint auto_increment not null,
   name                          varchar(255),
@@ -36,6 +43,13 @@ create table metier_domaine (
   id_metier                     bigint,
   id_domaine                    bigint,
   constraint pk_metier_domaine primary key (id_metier_domaine)
+);
+
+create table metier_parcours (
+  id_metier_parcours            bigint auto_increment not null,
+  id_metier                     bigint,
+  id_parcours                   bigint,
+  constraint pk_metier_parcours primary key (id_metier_parcours)
 );
 
 create table parcours (

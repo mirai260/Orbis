@@ -1,32 +1,77 @@
 $(document).ready(function(){
 	var domaines;
+	var dom;
+	var metiers;
 	$.post('api/getDomaines', function(data) {
 		domaines = data;
 		for(i in domaines) {
 			$("#domaine").append('<option value='+domaines[i].name+'>'+domaines[i].name+'</option>');
 		}
+		dom = $('#domaine option:selected').val();
+		console.log(dom);
+		$.ajax({
+			url: 'api/getMetiersByDomaine', 
+			type: 'POST',
+			data: dom,
+			success: function(data) {
+				metiers = data;
+				for(i in metiers) {
+					$("#APIMetier").append('<option value='+metiers[i].idMetier+'>'+metiers[i].nom+'</option>');
+				}
+			},
+			contentType: "application/json; charset=utf-8"
+		});
+	});
+	$("#domaine").change(function() {
+		$("#APIMetier").empty();
+		dom = $('#domaine option:selected').val();
+		console.log(dom);
+		$.ajax({
+			url: 'api/getMetiersByDomaine', 
+			type: 'POST',
+			data: dom,
+			success: function(data) {
+				metiers = data;
+				for(i in metiers) {
+					$("#APIMetier").append('<option value='+metiers[i].idMetier+'>'+metiers[i].nom+'</option>');
+				}
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json'
+		});
+	});
+	$("#fromMetier button.validation").click(function() {
+		$("#APIParcours").empty();
+		var listeMetiers = [];
+		var parcours;
+		var metier = parseInt($("#APIMetier option:selected").val());
+		listeMetiers.push(metier);
+		console.log(listeMetiers);
+		$.ajax({
+			url: 'api/getParcoursByMetiers', 
+			type: 'POST',
+			data: JSON.stringify(listeMetiers),
+			success: function(data) {
+				parcours = data;
+				for(i in parcours) {
+					console.log(parcours[i]);
+					$("#APIParcours").append('<li class="parcour"><h2>'+parcours[i].nom+'</h2><div class="hide">'+parcours[i].description+'</div></li>');
+				}
+				$(".accordeon .parcour").each(function() {
+					$(this).find("h2").click(function() {
+						if($(this).parent().find("div").is(":hidden")) {
+							$(this).parent().find("div").slideDown(200);
+						}
+						else {
+							$(this).parent().find("div").slideUp(200);
+						}
+					});
+				});
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json'
+		});
 	});
 });
 
-
-var metier;
-$.post('api/getMetiersByDomaine',$('#domaine').text(), function(data) {
-	metier = data;
-});
-$(document).ready(function(){
-	for(i in metier) {
-		$("#APIMetier").append('<input type="radio" name="metier" value='+metier[i].name+' checked>' +metier[i].name+ '<br>');
-	}
-});
-
-var parcour;
-$.post('api/getParcoursWithPrerequis',$('#metier').text(), function(data) {
-	parcour = data;
-});
-$(document).ready(function(){
-	for(i in parcour) {
-		$("#APIParcour").append('<button class="accordion">' +parcour[i].name +'</button><div class="panel"><p>'+parcour[i].description+'</p></div>');
-	}
-});
-
-$( "#footer" ).load( "http://localhost:8080/Footer.html" );
+$( "#footer" ).load( "./Footer.html" );

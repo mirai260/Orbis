@@ -70,7 +70,7 @@ $(document).ready(function(){
 						$("#APIMetier").append('<option value='+metiers[i].nom+'>'+metiers[i].nom+'</option>');
 					}
 				},
-				dataType: 'json'
+				contentType: "application/json; charset=utf-8",
 		});
 		var domainesCD;
 		$.post('api/getAllConcepts', function(data) {
@@ -100,7 +100,7 @@ function listMetier(){
 	$.ajax({
 			url: 'api/getMetiersByDomaine', 
 			type: 'POST',
-			data: "domaine="+dom,
+			data: dom,
 			success: function(data) {
 				console.log("coucou");
 				metiers = data;
@@ -108,6 +108,7 @@ function listMetier(){
 					$("#APIMetier").append('<option value='+metiers[i].nom+'>'+metiers[i].nom+'</option>');
 				}
 			},
+			contentType: "application/json; charset=utf-8",
 			dataType: 'json'
 	});
 	
