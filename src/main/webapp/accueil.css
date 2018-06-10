@@ -30,3 +30,6 @@ body
 a {
 	float:right;
 }
+.hide {
+	display: none;
+}

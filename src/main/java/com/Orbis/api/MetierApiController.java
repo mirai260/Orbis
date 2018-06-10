@@ -19,7 +19,7 @@ public class MetierApiController implements MetierApi {
 			@ApiParam(value = "Nom du domaine" ,required=true )
 			@RequestBody String domaine
     ){
-		System.out.println(domaine);
+//		System.out.println(domaine);
 		List<Metier> metiers = Metier.getMetierByDomaine(domaine);
         return new ResponseEntity<>(metiers, HttpStatus.OK);
 	}
