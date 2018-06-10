@@ -33,3 +33,20 @@ a {
 .hide {
 	display: none;
 }
+.accordeon {
+    width: 70%;
+    list-style: none;
+    padding: 0;
+}
+.accordeon li h2 {
+	background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    text-align: left;
+    margin: 0;
+    border-top: solid 1px;
+}
+.accordeon li div {
+	padding: 1em 0 1em 18px;
+}

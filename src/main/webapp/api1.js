@@ -59,18 +59,10 @@ $(document).ready(function(){
 				}
 				$(".accordeon .parcour").each(function() {
 					$(this).find("h2").click(function() {
-						$(".accordeon .parcours").find("div").each(function() {
-							if(!$(this).parent().find("div").hasClass("hide")) {
-								$(this).parent().find("div").addClass("hide");
-							}
-							$(this).slideUp(200);
-						});
-						if($(this).parent().find("div").hasClass("hide")) {
-							$(this).parent().find("div").removeClass("hide");
+						if($(this).parent().find("div").is(":hidden")) {
 							$(this).parent().find("div").slideDown(200);
 						}
 						else {
-							$(this).parent().find("div").addClass("hide");
 							$(this).parent().find("div").slideUp(200);
 						}
 					});
@@ -82,4 +74,4 @@ $(document).ready(function(){
 	});
 });
 
-$( "#footer" ).load( "http://localhost:8080/Footer.html" );
+$( "#footer" ).load( "./Footer.html" );
