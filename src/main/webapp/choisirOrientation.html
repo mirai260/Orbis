@@ -7,11 +7,7 @@
  <link href="multiple-select.css" rel="stylesheet"/>
  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
-
-
-   
 <body>
-    
 <div class="formulaire">
 	<h1>Orbis</h1>
 	<h2>Votre référence pour l'orientation</h2>
@@ -20,72 +16,30 @@
 		<fieldset>
 			<legend>Recherche par métier</legend>
 			<div>
-				<label>Domaine d'activité</label>
-				<select name="domaine" id="domaine"  Onchange="listMetier()"></select>
-			</div>
-			<div>
-				<label>métier voulu</label>
-				<select id="APIMetier"></select>
+				<select name="domaine" id="domaine">
+					<option value="default">Sélectionner</option>
+					<!-- Retour API Domaine + Métier -->
+				</select>
 			</div>
 		</fieldset>
 		<fieldset id="FieldCdésire"> <legend>Compétence désiré</legend>
-		<div id="Cdésire">
+		<div id="concept">
 		</div>
 		
 		</fieldset>
 		<fieldset> <legend>Compétence acquise </legend>
-		<div id="Cacquise">
-			<!-- <div class="skillLevel">
-				<label>Java</label>
-				<input type="checkbox" id="CacquiseJava" name="CacquiseJava" value="Java" onclick=notation(this.value)>
-				<p id="Java"></p>
-			</div> 
-			<div class="skillLevel">
-				<label>Robotique</label>
-				<input type="checkbox" id="CacquiseRobotique" name="CacquiseRobotique" value="Robotique" Onclick=notation(this.value)>
-				<p id="Robotique"></p>
-			</div>
-			<div class="skillLevel">
-				<label>Big Data</label>
-				<input type="checkbox" id="CacquiseBigData" name="CacquiseBigData" value="BigData" Onclick=notation(this.value)>
-				<p id="BigData"></p>
-			</div> -->
+		<div id="prerequis">
 		</div>
 		</fieldset>
 		<div>
-			<button class="validation">Valider</button> <button>Réinitialiser</button>
+			<button class="validation">Valider</button>
+			<!-- <button>Réinitialiser</button> -->
 		</div>
 	</div>
 </div>
 <ul id="APIParcours" class="accordeon">
 	<!-- Retour API Parcours -->
 </ul>
-<!-- <div class="suggestion">
-<h2 style="text-align:center">Accordeon</h2>
-
-<button class="accordion">Suggestion 1</button>
-<div class="panel">
-	<h3 id="titleModulAnswer">Ingénieur</h3>
-	<div class="repoussePrerequi">
-	<p>java</p>
-	</div>
-</div>
-
-<button class="accordion">Suggestion 2</button>
-<div class="panel">
-	<h3 id="titleModulAnswer">marketing</h3>
-	<div class="repoussePrerequi">
-	<p>parlotte +++</p>
-	</div>
-</div>
-
-<button class="accordion">Suggestion 3</button>
-<div class="panel">
-	<h3 id="titleModulAnswer">prof</h3>
-	<div class="repoussePrerequi">
-	<p>patience</p>
-	</div>
-</div> -->
 
 <script src="choisirOrientation.js"></script>
 </div> 
