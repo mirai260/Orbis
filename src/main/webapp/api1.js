@@ -25,6 +25,7 @@ $(document).ready(function(){
 		$("#APIParcours").empty();
 		var listeMetiers = [];
 		var parcours;
+		var parcoursMatched;
 		var metier = parseInt($("#domaine option:selected").val());
 		listeMetiers.push(metier);
 		console.log(listeMetiers);
@@ -33,11 +34,33 @@ $(document).ready(function(){
 			type: 'POST',
 			data: JSON.stringify(listeMetiers),
 			success: function(data) {
+				parcoursMatched = data;
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',
+			async: false
+		});
+		$.ajax({
+			url: 'api/getAllParcours', 
+			type: 'GET',
+			success: function(data) {
 				parcours = data;
-				for(i in parcours) {
-					console.log(parcours[i]);
-					$("#APIParcours").append('<li class="parcour"><h2>'+parcours[i].nom+'</h2><div class="hide">'+parcours[i].description+'</div></li>');
+				for(i in parcoursMatched) {
+					//console.log(parcoursMatched[i]);
+					$("#APIParcours").append('<li class="parcour matched"><h2>'+parcoursMatched[i].nom+'</h2><div class="hide">'+parcoursMatched[i].description+'</div></li>');
 				}
+				for(i in parcours) {
+					var res = false;
+					for(j in parcoursMatched) {
+						if(parcours[i].id_parcours == parcoursMatched[j].id_parcours) {
+							res = true;
+						}
+					}
+					if(!res) {
+						$("#APIParcours").append('<li class="parcour"><h2>'+parcours[i].nom+'</h2><div class="hide">'+parcours[i].description+'</div></li>');
+					}
+				}
+				parcoursMatched = null;
 				$(".accordeon .parcour").each(function() {
 					$(this).find("h2").click(function() {
 						if($(this).parent().find("div").is(":hidden")) {

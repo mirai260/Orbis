@@ -33,6 +33,9 @@ a {
 .hide {
 	display: none;
 }
+.matched h2 {
+	color: green !important;
+}
 .accordeon {
     width: 70%;
     list-style: none;
