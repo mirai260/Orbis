@@ -5,46 +5,27 @@ $(document).ready(function(){
 	$.post('api/getDomaines', function(data) {
 		domaines = data;
 		for(i in domaines) {
-			$("#domaine").append('<option value='+domaines[i].name+'>'+domaines[i].name+'</option>');
+			$("#domaine").append('<optgroup class="'+domaines[i].name+'" label='+domaines[i].name+'>');
+			$.ajax({
+				url: 'api/getMetiersByDomaine', 
+				type: 'POST',
+				data: domaines[i].name,
+				success: function(data) {
+					metiers = data;
+					for(j in metiers) {
+						$("optgroup."+domaines[i].name+"").append('<option value='+metiers[j].idMetier+'>'+metiers[j].nom+'</option>');
+					}
+				},
+				contentType: "application/json; charset=utf-8",
+				async: false
+			});
 		}
-		dom = $('#domaine option:selected').val();
-		console.log(dom);
-		$.ajax({
-			url: 'api/getMetiersByDomaine', 
-			type: 'POST',
-			data: dom,
-			success: function(data) {
-				metiers = data;
-				for(i in metiers) {
-					$("#APIMetier").append('<option value='+metiers[i].idMetier+'>'+metiers[i].nom+'</option>');
-				}
-			},
-			contentType: "application/json; charset=utf-8"
-		});
 	});
-	$("#domaine").change(function() {
-		$("#APIMetier").empty();
-		dom = $('#domaine option:selected').val();
-		console.log(dom);
-		$.ajax({
-			url: 'api/getMetiersByDomaine', 
-			type: 'POST',
-			data: dom,
-			success: function(data) {
-				metiers = data;
-				for(i in metiers) {
-					$("#APIMetier").append('<option value='+metiers[i].idMetier+'>'+metiers[i].nom+'</option>');
-				}
-			},
-			contentType: "application/json; charset=utf-8",
-			dataType: 'json'
-		});
-	});
-	$("#fromMetier button.validation").click(function() {
+	$("button.validation").click(function() {
 		$("#APIParcours").empty();
 		var listeMetiers = [];
 		var parcours;
-		var metier = parseInt($("#APIMetier option:selected").val());
+		var metier = parseInt($("#domaine option:selected").val());
 		listeMetiers.push(metier);
 		console.log(listeMetiers);
 		$.ajax({
