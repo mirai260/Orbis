@@ -4,6 +4,7 @@ import com.Orbis.model.Admin;
 import com.Orbis.model.Concept;
 import com.Orbis.model.Domaine;
 import com.Orbis.model.Eleve;
+import com.Orbis.model.Metier;
 import com.Orbis.model.Parcours;
 import com.Orbis.model.Prerequis;
 import com.Orbis.model.PrerequisParcours;
@@ -182,6 +183,29 @@ public class bddAdminApiController implements bddAdminApi{
     	Concept oldConcept = Concept.getConceptById(concept.getId_concept());
     	oldConcept.delete();
     	concept.insert();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    /************* Metier ***************/
+    public ResponseEntity<List<Metier>> getAllMetier(){
+    	return new ResponseEntity<>(Metier.find.all(), HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> addMetier(@ApiParam(value = "Metier à ajouter" ,required=true) @RequestBody Metier metier){
+    	metier.insert();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> deleteMetier(@ApiParam(value = "Id du metier à supprimer" ,required=true) @RequestBody Long id){
+    	Metier metier = Metier.getMetierById(id);
+    	metier.delete();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> modifyMetier(@ApiParam(value = "Metier à modifier" ,required=true) @RequestBody Metier metier){
+    	Metier oldMetier = Metier.getMetierById(metier.getId_metier());
+    	oldMetier.delete();
+    	metier.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
 

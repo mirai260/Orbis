@@ -14,7 +14,7 @@ import com.avaje.ebean.Expression;
 import com.avaje.ebean.Model;
 
 @Entity
-public class Metier {
+public class Metier extends Model{
 
 	@Id
     @GeneratedValue
@@ -41,15 +41,17 @@ public class Metier {
         return find.where().add(e1).findUnique();
     }
 	
-	public Long getIdMetier() {
-        return id_metier;
-    }
+	
 
-    public void setIdMetier(Long idMetier) {
-        this.id_metier = idMetier;
-    }
+    public Long getId_metier() {
+		return id_metier;
+	}
 
-    public String getNom() {
+	public void setId_metier(Long id_metier) {
+		this.id_metier = id_metier;
+	}
+
+	public String getNom() {
         return nom;
     }
 

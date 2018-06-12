@@ -14,6 +14,7 @@ import com.Orbis.model.Admin;
 import com.Orbis.model.Concept;
 import com.Orbis.model.Domaine;
 import com.Orbis.model.Eleve;
+import com.Orbis.model.Metier;
 import com.Orbis.model.Parcours;
 import com.Orbis.model.Prerequis;
 import com.Orbis.model.PrerequisParcours;
@@ -288,4 +289,44 @@ public interface bddAdminApi {
             produces = { "application/json" },
             method = RequestMethod.PUT)
     ResponseEntity<Void> modifyConcept(@ApiParam(value = "Concept à modifier" ,required=true) @RequestBody Concept concept);
+    
+    
+/************ Metier **************/
+    
+    @ApiOperation(value = "Récupérer tout les Métiers", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = Void.class)
+    })
+    @RequestMapping(value = "api/getAllMetier",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<List<Metier>> getAllMetier();
+    
+    
+    @ApiOperation(value = "Ajouter un Metier", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ajout effectué", response = Void.class),
+    })
+    @RequestMapping(value = "api/addMetier",
+            produces = { "application/json" },
+            method = RequestMethod.POST)
+    ResponseEntity<Void> addMetier(@ApiParam(value = "metier à ajouter" ,required=true) @RequestBody Metier metier);
+    
+    @ApiOperation(value = "Supprimer un metier", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Supression effectué", response = Void.class)
+    })
+    @RequestMapping(value = "api/deleteMetier",
+            produces = { "application/json" },
+            method = RequestMethod.DELETE)
+    ResponseEntity<Void> deleteMetier(@ApiParam(value = "Id du metier à supprimer" ,required=true) @RequestBody Long id);
+    
+    @ApiOperation(value = "Modifier un metier", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "modification effectué", response = Void.class)
+    })
+    @RequestMapping(value = "api/modifyMetier",
+            produces = { "application/json" },
+            method = RequestMethod.PUT)
+    ResponseEntity<Void> modifyMetier(@ApiParam(value = "Metier à modifier" ,required=true) @RequestBody Metier metier);
 }

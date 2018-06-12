@@ -28,7 +28,7 @@ body
 	align-items: center;
 	color : #237a8f;
 }
-a {
+#lien_connection{
 	float:right;
 }
 .hide {
