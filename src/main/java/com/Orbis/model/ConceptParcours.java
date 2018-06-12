@@ -28,6 +28,12 @@ public class ConceptParcours extends Model{
 		Expression expr = Expr.eq("id_concept_parcours", id_concept_parcours);
 		return find.where().add(expr).findUnique();
 	}
+    
+    public static ConceptParcours getConceptParcours(Long id_concept, Long id_parcours){
+		Expression expr1 = Expr.eq("id_parcours", id_parcours);
+		Expression expr2 = Expr.eq("id_concept", id_concept);
+		return find.where().add(expr1).add(expr2).findUnique();
+	}
 
     public Long getId_concept_parcours() {
         return id_concept_parcours;
