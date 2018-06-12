@@ -1,17 +1,95 @@
 jQuery(document).ready(function($) {
-	var tables = 
-	[
+   /*function classToggle() {
+      const navs = document.querySelectorAll('.Navbar__Items')
+  
+      navs.forEach(nav => nav.classList.toggle('Navbar__ToggleShow'));
+  }*/
+  function classToggleJob() {
+  	if($('.Metier #metier_a_ajouter').hasClass('Metier_affiche')){
+  		$('.Metier_affiche').addClass('Nouveau_metier').removeClass('Metier_affiche');
+
+
+  	}
+  	else{
+  		$('.Nouveau_metier').addClass('Metier_affiche').removeClass('Nouveau_metier');
+  		
+
+  	}
+  	
+  }
+
+
+  //document.querySelector('.Navbar__Link-toggle');
+  //console.log(document.querySelector('.Navbar__Link-toggle'));
+
+  //document.querySelector('.Navbar__Link-toggle').addEventListener('click', classToggle);
+
+  $('.ajout_metier').click(function() {
+  	classToggleJob();
+  	
+
+  });
+var url = "http://localhost:8080/api/getAllParcours";
+//var data = {"nom", "description"};
+var type="GET";
+var	$data = $('#data');
+var $description = $('description');
+var	$nom = $('#nom');
+/*$.ajax({
+		type : type,
+		url : url,
+		data : JSON.stringify(data),
+		headers : {"Content-Type": "application/json"},
+		success : function(data, statut){
+			console.log(data);
+		}
+})*/
+$.ajax("http://localhost:8080/api/getAllParcours", {
+	success: function(data){
+		$('#contenu').html(data);
+		console.log(data[0].nom);
+		/*for(i=0; i<length(data); i++){
+			console.log(data[i].nom);
+		}*/
+		//console.log(parcours.nom);
+	}
+
+
+});
+$('.Liste_metier').click(function(){
+	$('.metierliste').append("<input id='nom_metier' required value='nom du metier' type='text' name='nom_metier'>")
+
+});
+$.ajax("http://localhost:8080/api/getAllMetier", {
+	success: function(data){
+		$('#contenu').html(data);
+		console.log(data[0].nom);
+		for (var i=1; i<4; i++){
+			$('.Liste_metier').append("<li class='metierliste'>"+data[i].nom+"</li>");
+		}
+		
+		/*for(i=0; i<length(data); i++){
+			console.log(data[i].nom);
+		}*/
+		
+	}
+});
+/*$.ajax("http://localhost:8080/api/addMetier", {
+	jQuery.post( url [, data ] [, success ] [, dataType ] )
+	}*/
+var tables = 
+[
 	//{nom : "Admin", colonnes : ["id_admin", "login", "mdp"], can_modify : true},
-	{nom : "Concept", colonnes : ["id_concept", "nom"], can_modify : true},
-	//{nom : "Domaine", colonnes : ["id_domaine", "name"], can_modify : true},
+	//{nom : "Concept", colonnes : ["id_concept", "nom"], can_modify : true},
+	{nom : "Domaine", colonnes : ["id_domaine", "name"], can_modify : true},
 	//{nom : "Eleve", colonnes : ["id_eleve", "login", "mdp"], can_modify : true},
-	//{nom : "Metier", colonnes : ["id_metier", "nom", "description"], can_modify : true},
-	//{nom : "Metier_domaine", colonnes : ["id_metier_domaine", "id_domaine", "id_metier"], can_modify : false},
+	{nom : "Metier", colonnes : ["id_metier", "nom", "description"], can_modify : true},
+	{nom : "Metier_domaine", colonnes : ["id_metier_domaine", "id_domaine", "id_metier"], can_modify : false},
 	//{nom : "Module_complementaire", colonnes : ["id_module", "nom", "description", "lien_fiche_module"], can_modify : true},
-	{nom : "Parcours", colonnes : ["id_parcours", "nom", "description"], can_modify : true},
-	{nom : "Prerequis", colonnes : ["id_prerequis", "nom", "description", "niveau", "note"], can_modify : true},
-	{nom : "Prerequis_parcours", colonnes : ["id_prerequis_parcours", "id_parcours", "id_prerequis"], can_modify : false},
-	{nom : "Professeur", colonnes : ["id_professeur", "login", "mdp"], can_modify : true}
+	//{nom : "Parcours", colonnes : ["id_parcours", "nom", "description"], can_modify : true},
+	//{nom : "Prerequis", colonnes : ["id_prerequis", "nom", "description", "niveau", "note"], can_modify : true},
+	//{nom : "Prerequis_parcours", colonnes : ["id_prerequis_parcours", "id_parcours", "id_prerequis"], can_modify : false},
+	//{nom : "Professeur", colonnes : ["id_professeur", "login", "mdp"], can_modify : true}
 ];
 function initialisation(){
 	
