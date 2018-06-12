@@ -2,8 +2,65 @@
 * {
 	box-sizing: border-box;
 }
-h1{
-	color:red;
+html {
+	height: 100%;
+}
+body
+{
+	margin: 0;
+    min-height: 100%;
+    background-color: #FAFAFA;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.head {
+	display: flex;
+    align-items: center;
+	height: 8em;
+	background-color: #809ff7;
+	box-shadow:0 0 20px 0 rgba(100, 100, 100, 0.2), 0 6px 25px 0 rgba(100, 100, 100, 0.5);
+}
+.head img {
+	height: 50%;
+	margin-left: 5%;
+}
+.head .titre
+{
+	width: 100%;
+    position: absolute;
+    text-align: center;
+}
+.head .titre h1 {
+	font-size: 40px;
+}
+.head .titre h1, .head .titre h2
+{
+	margin: 0;
+	color: #102047;
+}
+#conteneur
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 2em auto;
+}
+.formulaire {
+	display: flex;
+    flex-direction: column;
+    z-index: 1;
+    background: #FFFFFF;
+    align-items: center;
+    padding: 45px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    width: 100%;
+    margin: auto;
+    color: #102047;
+    border-radius: 7px;
+}
+.formulaire p {
+	font-weight: bold;
+    font-size: 14px;
 }
 #Cdésire{
 	margin-left:10%;
@@ -18,13 +75,8 @@ h1{
 #Cacquise{
 	margin-left:10%;
 }
-.formulaire{
-	display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 fieldset{
-	width:60%;
+	width:100%;
 }
 .skillLevel{
 	
@@ -69,26 +121,29 @@ fieldset{
 	color: green !important;
 }
 .accordeon {
-    width: 70%;
+    width: 100%;
     list-style: none;
     padding: 0;
-    margin: auto;
-    margin-top: 1.5em;
+}
+.accordeon li {
+    border-top: solid 1px black;
+}
+.accordeon li:first-child {
+	border-top: none;
 }
 .accordeon li h2 {
-	background-color: #eee;
+	background-color: lavender;
     color: #444;
     cursor: pointer;
     padding: 18px;
     text-align: left;
     margin: 0;
-    border-top: solid 1px;
 }
 .accordeon li div {
 	padding: 1em 0 1em 18px;
 }
 .typeRecherche {
-	width: 50%;
+	width: 80%;
     align-items: center;
     display: flex;
     flex-direction: column;

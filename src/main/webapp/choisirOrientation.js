@@ -137,6 +137,9 @@ $(document).ready(function(){
 						$("#APIParcours").append('<li class="parcour"><h2>'+parcours[i].parcours.nom+'</h2><div class="hide">'+parcours[i].parcours.description+'</div></li>');
 					}
 				}
+				$("#APIParcours").css("border-style","groove");
+				$("#APIParcours").css("border-radius","10px");
+				$("#APIParcours").css("box-shadow","0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24)");
 				parcoursMatched = null;
 				$(".accordeon .parcour").each(function() {
 					$(this).find("h2").click(function() {
@@ -155,3 +158,5 @@ $(document).ready(function(){
 		});
 	});
 });
+
+$( "footer" ).load( "./Footer.html" );
