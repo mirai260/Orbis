@@ -22,7 +22,7 @@ function signin(){
 			if (status == "success"){
 				sessionStorage.setItem('token', result.access_token);
 				$("body").css("cursor", "default");
-				window.location.href = "pageAcceuil.html";
+				window.location.href = "accueil.html";
 			}
 		},
 		error: function(xhr,status,error) {

@@ -146,3 +146,7 @@ function ajouter(table, nbr_colonnes){
 }
 
 $('document').ready(initialisation());
+
+
+
+
