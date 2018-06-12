@@ -43,19 +43,21 @@ public class ConceptParcours extends Model{
         this.id_concept_parcours = id_concept_parcours;
     }
 
-    public Long getIdConcept() {
-        return id_concept;
-    }
+	public Long getId_concept() {
+		return id_concept;
+	}
 
-    public void setIdConcept(Long id_concept) {
-        this.id_concept = id_concept;
-    }
+	public void setId_concept(Long id_concept) {
+		this.id_concept = id_concept;
+	}
 
-    public Long getIdParcours() {
-        return id_parcours;
-    }
+	public Long getId_parcours() {
+		return id_parcours;
+	}
 
-    public void setIdParcours(Long idParcours) {
-        this.id_parcours = idParcours;
-    }
+	public void setId_parcours(Long id_parcours) {
+		this.id_parcours = id_parcours;
+	}
+
+    
 }

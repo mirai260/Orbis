@@ -43,19 +43,21 @@ public class PrerequisParcours extends Model{
         this.id_prerequis_parcours = id_prerequis_parcours;
     }
 
-    public Long getIdPrerequis() {
-        return id_prerequis;
-    }
+	public Long getId_prerequis() {
+		return id_prerequis;
+	}
 
-    public void setIdPrerequis(Long idPrerequis) {
-        this.id_prerequis = idPrerequis;
-    }
+	public void setId_prerequis(Long id_prerequis) {
+		this.id_prerequis = id_prerequis;
+	}
 
-    public Long getIdParcours() {
-        return id_parcours;
-    }
+	public Long getId_parcours() {
+		return id_parcours;
+	}
 
-    public void setIdParcours(Long idParcours) {
-        this.id_parcours = idParcours;
-    }
+	public void setId_parcours(Long id_parcours) {
+		this.id_parcours = id_parcours;
+	}
+
+    
 }

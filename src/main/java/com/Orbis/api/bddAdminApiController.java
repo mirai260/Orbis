@@ -44,8 +44,8 @@ public class bddAdminApiController implements bddAdminApi{
     
     public ResponseEntity<Void> modifyDomaine(@ApiParam(value = "Domaine à modifier" ,required=true) @RequestBody Domaine domaine){
     	Domaine oldDomaine = Domaine.getDomaineById(domaine.getId_domaine());
-    	oldDomaine.delete();
-    	domaine.insert();
+    	oldDomaine.edit(domaine);
+    	oldDomaine.save();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
@@ -144,8 +144,8 @@ public class bddAdminApiController implements bddAdminApi{
     
     public ResponseEntity<Void> modifyParcours(@ApiParam(value = "Parcours à modifier" ,required=true) @RequestBody Parcours parcours){
     	Parcours oldParcours = Parcours.getParcoursById(parcours.getId_parcours());
-    	oldParcours.delete();
-    	parcours.insert();
+    	oldParcours.edit(parcours);
+    	oldParcours.save();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
@@ -168,8 +168,8 @@ public class bddAdminApiController implements bddAdminApi{
     
     public ResponseEntity<Void> modifyPrerequis(@ApiParam(value = "Parcours à modifier" ,required=true) @RequestBody Prerequis prerequis){
     	Prerequis oldPrerequis = Prerequis.getPrerequisById(prerequis.getId_prerequis());
-    	oldPrerequis.delete();
-    	prerequis.insert();
+    	oldPrerequis.edit(prerequis);
+    	oldPrerequis.save();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
@@ -208,8 +208,8 @@ public class bddAdminApiController implements bddAdminApi{
     
     public ResponseEntity<Void> modifyConcept(@ApiParam(value = "Concept à modifier" ,required=true) @RequestBody Concept concept){
     	Concept oldConcept = Concept.getConceptById(concept.getId_concept());
-    	oldConcept.delete();
-    	concept.insert();
+    	oldConcept.edit(concept);
+    	oldConcept.save();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
@@ -231,8 +231,8 @@ public class bddAdminApiController implements bddAdminApi{
     
     public ResponseEntity<Void> modifyMetier(@ApiParam(value = "Metier à modifier" ,required=true) @RequestBody Metier metier){
     	Metier oldMetier = Metier.getMetierById(metier.getId_metier());
-    	oldMetier.delete();
-    	metier.insert();
+    	oldMetier.edit(metier);
+    	oldMetier.save();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
 

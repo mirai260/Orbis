@@ -41,7 +41,7 @@ public interface ConceptApi {
     })
     @RequestMapping(value = "api/getConceptsOfParcours",
             produces = { "application/json" },
-            method = RequestMethod.GET /*méthode d'accès à l'api*/)
+            method = RequestMethod.POST /*méthode d'accès à l'api*/)
     ResponseEntity<List<Concept>> getConceptsOfParcours(
             @ApiParam(value = "id du parcours", required = true)
             @RequestBody Long id_parcours

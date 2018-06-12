@@ -51,7 +51,7 @@ $(document).ready(function(){
 		}
 
 		var domainesCD;
-		$.post('api/getAllConcepts', function(data) {
+		$.get('api/getAllConcepts', function(data) {
 			domainesCD = data;
 			for(i in domainesCD) {
 				$("#concept").append('<input type="checkbox" value="'+domainesCD[i].id_concept+'"/><label>'+domainesCD[i].nom+'</label><br>');

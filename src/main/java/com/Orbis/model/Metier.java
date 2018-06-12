@@ -24,6 +24,11 @@ public class Metier extends Model{
 	private String nom;
 	private String description;
 	
+	public void edit(Metier m) {
+		this.nom = m.nom;
+		this.description = m.description;
+	}
+	
 	public static Model.Find<Long, Metier> find = new Model.Find<Long, Metier>() {};
 	
 	public static List<Metier> getMetierByDomaine(String domaine){

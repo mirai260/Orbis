@@ -63,15 +63,16 @@ function getData(i){
 					html += "<tr>";
 					for (c in tables[i].colonnes){
 						if (c == 0){
-							html += "<td>" + data[j][tables[i].colonnes[c]] + "</td>";
+							html += "<td id='table" + i + "_ligne" + j + "_colonne" + c + "'>" + data[j][tables[i].colonnes[c]] + "</td>";
 						}
 						else{
 							html += "<td id='table" + i + "_ligne" + j + "_colonne" + c + "'>" + data[j][tables[i].colonnes[c]] + "</td>";
 						}
 					}
 					html += "<td>" +
-							"<a><img title='Modifier' src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
-							"<a><img title='Supprimer'  src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
+							"<a><img title='valider' hidden id='valider_table" + i + "_ligne" + j + "' src='images/valider.png' height='20' onclick='valider(" + i + ", " + j + ")'/></a>" +
+							"<a><img title='Modifier' id='edit_table" + i + "_ligne" + j + "' src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
+							"<a><img title='Supprimer' src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
 							"</td>";
 					html += "</tr>";
 				}
@@ -101,9 +102,14 @@ function emptyTable(i){
 function showEdit(table, row){
 	for (c in tables[table].colonnes){
 		if (c != 0){
-			document.getElementById("table" + table + "_ligne" + row + "_colonne" + c).innerHTML = "<input type='text' value='" + document.getElementById("table" + table + "_ligne" + row + "_colonne" + c).innerHTML + "'/>";
+			document.getElementById("table" + table + "_ligne" + row + "_colonne" + c).innerHTML = "<input id='table" + table + "_colonne" + c + "row_" + row + "' type='text' value='" + document.getElementById("table" + table + "_ligne" + row + "_colonne" + c).innerHTML + "'/>";
+		}
+		else{
+			document.getElementById("table" + table + "_ligne" + row + "_colonne" + c).innerHTML = "<input id='table" + table + "_colonne" + c + "row_" + row + "' type='text' value='" + document.getElementById("table" + table + "_ligne" + row + "_colonne" + c).innerHTML + "' disabled/>";
 		}
 	}
+	$("#edit_table" + table + "_ligne" + row).hide();
+	$("#valider_table" + table + "_ligne" + row).show();
 }
 
 
@@ -129,11 +135,28 @@ function ajouter(table, nbr_colonnes){
 		data[tables[table].colonnes[i]] = document.getElementById("table" + table + "_colonne" + i).value;
 		console.log(document.getElementById("table" + table + "_colonne" + i).value);
 	}
-	console.log(data);
 	
 	var url = "http://localhost:8080/api/add" + tables[table].nom;
-	console.log(url);
 	var type="POST";
+	$.ajax({
+			type : type,
+			url : url,
+			async : false,
+			data : JSON.stringify(data),
+			headers : {"Content-Type": "application/json"}
+	})
+	emptyTable(table);
+	getData(table);
+}
+function valider(table, row){
+	data = {};
+	for (c in tables[table].colonnes){
+		data[tables[table].colonnes[c]] = $("#table" + table + "_colonne" + c + "row_" + row).val();
+	}
+	$("#edit_table" + table + "_ligne" + row).show();
+	$("#valider_table" + table + "_ligne" + row).hide();
+	var url = "http://localhost:8080/api/modify" + tables[table].nom;
+	var type="PUT";
 	$.ajax({
 			type : type,
 			url : url,
