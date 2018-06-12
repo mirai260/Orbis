@@ -147,8 +147,11 @@ function ajouter(table, nbr_colonnes){
 	emptyTable(table);
 	getData(table);
 }
-
+$('.deconnexion').click(function(){
+  	sessionStorage.removeItem('token');
+  });
 $('document').ready(initialisation());
+
 
 
 
