@@ -22,6 +22,10 @@ public class Parcours extends Model{
     private String description;
 
 
+    public void edit(Parcours p) {
+    	this.nom = p.nom;
+    	this.description = p.description;
+    }
 
     public static Model.Find<Long, Parcours> find = new Model.Find<Long, Parcours>() {};  // Outil de recherche dans la bdd
 

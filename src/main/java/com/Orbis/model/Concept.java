@@ -22,6 +22,10 @@ public class Concept extends Model{
 	
 	private String nom;
 	
+	public void edit(Concept c) {
+		this.nom = c.nom;
+	}
+	
 	public static Model.Find<Long, Concept> find = new Model.Find<Long, Concept>() {};
 	
 	
