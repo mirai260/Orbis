@@ -16,7 +16,7 @@
 function initialisation(){
 	
 	for (i in tables){
-		var table = "<h3>" + tables[i].nom + "</h3><table id='table" + i + "'><tr>";
+		var table = "<h3 class='table'>" + tables[i].nom + "</h3><table class='table'  id='table" + i + "'><tr>";
 		for (j in tables[i].colonnes){
 			table += "<th>" + tables[i].colonnes[j] + "</th>";
 		}
@@ -87,6 +87,12 @@ function emptyTable(i){
 	for (j in tables[i].colonnes){
 		if (j == 0)
 			table += "<td>" + "<input type='text' id='table" + i + "_colonne" + j + "' disabled/>" + "</td>";
+		if (i == 2 || j==2 ){
+			table += "<td>" + "<textarea type='text' id='table" + i + "_colonne" + j + "'/></textarea>" + "</td>";
+		}
+		if (i == 3 && j == 2 ){
+			table += "<td>" + "<textarea type='text' id='table" + i + "_colonne" + j + "'/></textarea>" + "</td>";
+		}
 		else
 			table += "<td>" + "<input type='text' id='table" + i + "_colonne" + j + "'/>" + "</td>";
 	}

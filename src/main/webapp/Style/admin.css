@@ -12,6 +12,21 @@ body {
 
 .Navbar__Link {
   padding-right: 8px;
+  display: block;
+}
+.Navbar__Link :hover {
+  color: black;
+
+}
+
+.Navbar__Link a{
+  display: flex;
+  -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+  text-decoration: none;
+  color: white;
 }
 
 .Navbar__Items, .Navbar__Link-toggle {
@@ -68,3 +83,22 @@ body {
 .show{
   display:show;
 }
+.bdd {
+  text-align: center;
+  vertical-align: center
+  flex-direction: column;
+
+}
+.bdd:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* space width */
+  
+}
+.table {
+  
+  vertical-align: middle;
+}
+

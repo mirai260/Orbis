@@ -29,54 +29,7 @@ jQuery(document).ready(function($) {
   	
 
   });
-var url = "http://localhost:8080/api/getAllParcours";
-//var data = {"nom", "description"};
-var type="GET";
-var	$data = $('#data');
-var $description = $('description');
-var	$nom = $('#nom');
-/*$.ajax({
-		type : type,
-		url : url,
-		data : JSON.stringify(data),
-		headers : {"Content-Type": "application/json"},
-		success : function(data, statut){
-			console.log(data);
-		}
-})*/
-$.ajax("http://localhost:8080/api/getAllParcours", {
-	success: function(data){
-		$('#contenu').html(data);
-		console.log(data[0].nom);
-		/*for(i=0; i<length(data); i++){
-			console.log(data[i].nom);
-		}*/
-		//console.log(parcours.nom);
-	}
 
-
-});
-$('.Liste_metier').click(function(){
-	$('.metierliste').append("<input id='nom_metier' required value='nom du metier' type='text' name='nom_metier'>")
-
-});
-$.ajax("http://localhost:8080/api/getAllMetier", {
-	success: function(data){
-		$('#contenu').html(data);
-		console.log(data[0].nom);
-		for (var i=1; i<4; i++){
-			$('.Liste_metier').append("<li class='metierliste'>"+data[i].nom+"</li>");
-		}
-		
-		/*for(i=0; i<length(data); i++){
-			console.log(data[i].nom);
-		}*/
-		
-	}
-});
-/*$.ajax("http://localhost:8080/api/addMetier", {
-	jQuery.post( url [, data ] [, success ] [, dataType ] )
-	}*/
 var tables = 
 [
 	//{nom : "Admin", colonnes : ["id_admin", "login", "mdp"], can_modify : true},
@@ -94,7 +47,7 @@ var tables =
 function initialisation(){
 	
 	for (i in tables){
-		var table = "<h3>" + tables[i].nom + "</h3><table id='table" + i + "'><tr>";
+		var table = "<h3 class='table'>" + tables[i].nom + "</h3><table class='table' id='table" + i + "'><tr>";
 		for (j in tables[i].colonnes){
 			table += "<th>" + tables[i].colonnes[j] + "</th>";
 		}
