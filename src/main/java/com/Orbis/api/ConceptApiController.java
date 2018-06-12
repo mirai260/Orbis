@@ -34,7 +34,7 @@ public class ConceptApiController implements ConceptApi {
     	List<ConceptParcours> l = ConceptParcours.find.where().add(expr).findList();
     	List<Concept> concepts = new ArrayList<>();
     	for (ConceptParcours cp : l) {
-    		concepts.add(Concept.getConceptById(cp.getIdConcept()));
+    		concepts.add(Concept.getConceptById(cp.getId_concept()));
     	}
     	return new ResponseEntity<>(concepts, HttpStatus.OK);
     }
@@ -45,7 +45,7 @@ public class ConceptApiController implements ConceptApi {
             @ApiParam(value = "Association d'un concept à un parcours", required = true)
             @RequestBody ConceptParcours conceptParcours
     ){
-    	if (ConceptParcours.getConceptParcours(conceptParcours.getIdConcept(), conceptParcours.getIdParcours()) == null)
+    	if (ConceptParcours.getConceptParcours(conceptParcours.getId_concept(), conceptParcours.getId_parcours()) == null)
     		conceptParcours.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -56,7 +56,7 @@ public class ConceptApiController implements ConceptApi {
             @ApiParam(value = "Association Concept_parcours à supprimer", required = true)
             @RequestBody ConceptParcours conceptParcours
     ){
-    	ConceptParcours cp = ConceptParcours.getConceptParcours(conceptParcours.getIdConcept(), conceptParcours.getIdParcours());
+    	ConceptParcours cp = ConceptParcours.getConceptParcours(conceptParcours.getId_concept(), conceptParcours.getId_parcours());
     	if (cp != null)
     		cp.delete();
     	return new ResponseEntity<>(HttpStatus.OK);
