@@ -40,7 +40,7 @@ public interface PrerequisApi {
     })
     @RequestMapping(value = "api/getPrerequisOfParcours",
             produces = { "application/json" },
-            method = RequestMethod.GET /*méthode d'accès à l'api*/)
+            method = RequestMethod.POST /*méthode d'accès à l'api*/)
     ResponseEntity<List<Prerequis>> getPrerequisOfParcours(
             @ApiParam(value = "id du parcours", required = true)
             @RequestBody Long id_parcours

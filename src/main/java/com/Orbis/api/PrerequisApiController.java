@@ -31,7 +31,7 @@ public class PrerequisApiController implements PrerequisApi{
     	List<PrerequisParcours> l = PrerequisParcours.find.where().add(expr).findList();
     	List<Prerequis> prerequis = new ArrayList<>();
     	for (PrerequisParcours pp : l) {
-    		prerequis.add(Prerequis.getPrerequisById(pp.getIdParcours()));
+    		prerequis.add(Prerequis.getPrerequisById(pp.getId_prerequis()));
     	}
     	return new ResponseEntity<>(prerequis, HttpStatus.OK);
     }
@@ -42,7 +42,7 @@ public class PrerequisApiController implements PrerequisApi{
             @ApiParam(value = "Association d'un prerequis à un parcours", required = true)
             @RequestBody PrerequisParcours prerequisParcours
     ){
-    	if (PrerequisParcours.getPrerequisParcours(prerequisParcours.getIdPrerequis(), prerequisParcours.getIdParcours()) == null)
+    	if (PrerequisParcours.getPrerequisParcours(prerequisParcours.getId_prerequis(), prerequisParcours.getId_parcours()) == null)
     		prerequisParcours.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -53,7 +53,7 @@ public class PrerequisApiController implements PrerequisApi{
             @ApiParam(value = "Association Prerequis_parcours à supprimer", required = true)
             @RequestBody PrerequisParcours prerequisParcours
     ){
-    	PrerequisParcours pp = PrerequisParcours.getPrerequisParcours(prerequisParcours.getIdPrerequis(), prerequisParcours.getIdParcours());
+    	PrerequisParcours pp = PrerequisParcours.getPrerequisParcours(prerequisParcours.getId_prerequis(), prerequisParcours.getId_parcours());
     	if (pp != null)
     		pp.delete();
     	return new ResponseEntity<>(HttpStatus.OK);
