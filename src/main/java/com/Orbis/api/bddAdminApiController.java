@@ -8,6 +8,7 @@ import com.Orbis.model.Metier;
 import com.Orbis.model.Parcours;
 import com.Orbis.model.Prerequis;
 import com.Orbis.model.PrerequisParcours;
+import com.Orbis.model.Professeur;
 
 import io.swagger.annotations.ApiParam;
 
@@ -71,6 +72,32 @@ public class bddAdminApiController implements bddAdminApi{
     	Eleve oldEleve = Eleve.getEleveById(eleve.getId_eleve());
     	oldEleve.delete();
     	eleve.insert();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    
+    /************ Professeur ***************/
+    public ResponseEntity<List<Professeur>> getAllProfesseur(){
+    	return new ResponseEntity<>(Professeur.find.all(), HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> addProfesseur(@ApiParam(value = "Professeur à ajouter" ,required=true) @RequestBody Professeur professeur){
+    	professeur.setMdp(BCrypt.hashpw(professeur.getMdp(), BCrypt.gensalt()));
+    	System.out.println(BCrypt.hashpw(professeur.getMdp(), BCrypt.gensalt()));
+    	professeur.insert();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> deleteProfesseur(@ApiParam(value = "Id du Professeur à supprimer" ,required=true) @RequestBody Long id){
+    	Professeur professeur = Professeur.getProfesseurById(id);
+    	professeur.delete();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> modifyProfesseur(@ApiParam(value = "Professeur à modifier" ,required=true) @RequestBody Professeur professeur){
+    	Professeur oldProfesseur = Professeur.getProfesseurById(professeur.getId_professeur());
+    	oldProfesseur.delete();
+    	professeur.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     

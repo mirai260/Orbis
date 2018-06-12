@@ -16,6 +16,8 @@ drop table if exists metier_parcours;
 
 drop table if exists parcours;
 
+drop table if exists parcours_professeur;
+
 drop table if exists prerequis;
 
 drop table if exists prerequis_parcours;

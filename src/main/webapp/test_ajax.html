@@ -19,14 +19,39 @@
 		xmlhttp.setRequestHeader("Content-Type", "application/json");
 		xmlhttp.send(JSON.stringify({login:"test", mdp:"briet"}));*/
 		
-		var url = "http://localhost:8080/api/addEleve";
-		var data = {login : "test111", mdp : "briet"};
-		var type="POST";
 		$.ajax({
-				type : type,
-				url : url, 
-				data : JSON.stringify(data),
-				headers : {"Content-Type": "application/json"}
+			url: 'http://localhost:8080/oauth/token', 
+			type: 'POST',
+			data: 'grant_type=password&username=' + "test" + '&password=' + "test",
+			headers: {
+				"Authorization":"Basic T3JiaXM6b3JiaXM=",
+				"Content-Type":"application/x-www-form-urlencoded; charset=utf-8"
+			},
+			success: function(data) {
+				console.log(data);
+			},
+			contentType: "application/json; charset=utf-8",
+			async: false
+		})
+		
+		
+		var token;
+		$.ajax({
+			url: 'api/getParcoursOfConnectedProfesseur', 
+			type: 'GET',
+			data: "",
+			headers: {
+				"Authorization":"Bearer " + token,
+				"Content-Type":"application/x-www-form-urlencoded; charset=utf-8"
+			},
+			success: function(data) {
+				console.log(data);
+			},
+			error: function(data) {
+				console.log(data);
+			},
+			contentType: "application/json; charset=utf-8",
+			async: false
 		})
 		
 	</script>

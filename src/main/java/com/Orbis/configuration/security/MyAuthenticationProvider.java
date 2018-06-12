@@ -45,13 +45,13 @@ public class MyAuthenticationProvider implements org.springframework.security.au
         if (professeur != null && BCrypt.checkpw(password, professeur.getMdp())){
         	List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
 	        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_PROFESSEUR"));
-			return new UsernamePasswordAuthenticationToken(professeur.getLogin(), professeur.getMdp(), grantedAuthorityList);
+			return new UsernamePasswordAuthenticationToken(professeur.getId_professeur(), professeur.getMdp(), grantedAuthorityList);
         }
         Admin admin = Admin.getAdminByLogin(login);
         if (admin != null && BCrypt.checkpw(password, admin.getMdp())){
         	List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
 	        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-			return new UsernamePasswordAuthenticationToken(admin.getLogin(), admin.getMdp(), grantedAuthorityList);
+			return new UsernamePasswordAuthenticationToken(admin.getId_admin(), admin.getMdp(), grantedAuthorityList);
         }
         
         
