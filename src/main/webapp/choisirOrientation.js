@@ -123,6 +123,9 @@ $(document).ready(function(){
 				async: false
 			});
 		}
+		else {
+			parcoursMatched = [];
+		}
 		$.ajax({
 			url: 'api/sortParcours', 
 			type: 'POST',
