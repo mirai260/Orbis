@@ -28,7 +28,7 @@ function shownumber(arg){
 //}
 
 $(document).ready(function(){
-	var domaines;
+	/*var domaines;
 	var metiers;
 	var dom;
 	$.post('api/getDomaines', function(data) {
@@ -49,7 +49,7 @@ $(document).ready(function(){
 				async: false
 			});
 		}
-	});
+	});*/
 	var domainesCD;
 	$.post('api/getAllConcepts', function(data) {
 		domainesCD = data;
