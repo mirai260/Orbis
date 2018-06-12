@@ -27,5 +27,32 @@ jQuery(document).ready(function($) {
   $('.ajout_metier').click(function() {
   	classToggleJob();
   });
+var url = "http://localhost:8080/api/getAllParcours";
+//var data = {"nom", "description"};
+var type="GET";
+/*$.ajax({
+		type : type,
+		url : url,
+		data : JSON.stringify(data),
+		headers : {"Content-Type": "application/json"},
+		success : function(data, statut){
+			console.log(data);
+		}
+})*/
+$.ajax("http://localhost:8080/api/getAllParcours", {
+	success: function(data){
+		$('#contenu').html(data);
+		console.log(data[0].nom);
+		for(i=0; i<length(data); i++){
+			console.log(data[i].nom);
+		}
+		//console.log(parcours.nom);
+	}
+
+
+});
+//console.log("coucou");
+
+
 });
 
