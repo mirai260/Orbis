@@ -62,7 +62,7 @@ public interface bddAdminApi {
     })
     @RequestMapping(value = "api/modifyDomaine",
             produces = { "application/json" },
-            method = RequestMethod.DELETE)
+            method = RequestMethod.PUT)
     ResponseEntity<Void> modifyDomaine(@ApiParam(value = "Domaine à modifier" ,required=true) @RequestBody Domaine domaine);
     
     

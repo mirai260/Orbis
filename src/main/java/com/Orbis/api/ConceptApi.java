@@ -42,10 +42,7 @@ public interface ConceptApi {
     @RequestMapping(value = "api/getConceptsOfParcours",
             produces = { "application/json" },
             method = RequestMethod.GET /*méthode d'accès à l'api*/)
-    ResponseEntity<List<Concept>> getConceptsOfParcours(
-            @ApiParam(value = "id du parcours", required = true)
-            @RequestBody Long id_parcours
-    );
+    ResponseEntity<List<Concept>> getConceptsOfParcours(@ApiParam(value = "id du parcours", required = true) @RequestBody Long id_parcours);
 	
 	
 	@ApiOperation(value = "Ajouter un concept à un parcours", notes = "", response = Void.class, tags={ "concept", })

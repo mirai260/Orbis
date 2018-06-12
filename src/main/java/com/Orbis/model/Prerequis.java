@@ -26,7 +26,12 @@ public class Prerequis extends Model{
     private String niveau;
     private String note;
 
-    
+    public void edit(Prerequis p) {
+    	this.nom = p.nom;
+    	this.description = p.description;
+    	this.niveau = p.niveau;
+    	this.note = p.note;
+    }
     
     public static Model.Find<Long, Prerequis> find = new Model.Find<Long, Prerequis>() {};  // Outil de recherche dans la bdd
 

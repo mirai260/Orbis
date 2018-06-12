@@ -22,6 +22,10 @@ public class Domaine extends Model{
 	
 	private String name;
 	
+	public void edit(Domaine d) {
+		this.name = d.name;
+	}
+	
 	public static Model.Find<Long, Domaine> find = new Model.Find<Long, Domaine>() {};
 	
 	public static List<Domaine> getAllDomaine(){

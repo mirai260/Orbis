@@ -30,6 +30,7 @@ public class ConceptApiController implements ConceptApi {
 	
 	
 	public ResponseEntity<List<Concept>> getConceptsOfParcours(@ApiParam(value = "id du parcours", required = true) @RequestBody Long id_parcours){
+		System.out.println(id_parcours);
     	Expression expr = Expr.eq("id_parcours", id_parcours);
     	List<ConceptParcours> l = ConceptParcours.find.where().add(expr).findList();
     	List<Concept> concepts = new ArrayList<>();
