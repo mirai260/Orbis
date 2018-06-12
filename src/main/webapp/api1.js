@@ -76,4 +76,4 @@ $(document).ready(function(){
 	});
 });
 
-$( "#footer" ).load( "./Footer.html" );
+$( "footer" ).load( "./Footer.html" );
