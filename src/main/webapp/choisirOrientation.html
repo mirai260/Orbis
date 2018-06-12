@@ -5,7 +5,6 @@
 <title>Orbis</title>
  <link rel="stylesheet" href="choisirOrientation.css" />
  <link href="multiple-select.css" rel="stylesheet"/>
- <link rel="stylesheet" href="Footer.css" />
  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 <body>
@@ -18,26 +17,41 @@
 	</div>
 	<div id="conteneur">
 		<div class="formulaire">
-			<p> Remplissez un ou plusieur champs suivants </p>
+			<p> Remplissez un ou plusieurs champs suivants </p>
 			<div class="typeRecherche">
-				<fieldset>
-					<legend>Recherche par métier</legend>
+				<div>
+					<fieldset>
+						<legend>Recherche par métier</legend>
+						<div>
+							<select name="domaine" id="domaine">
+								<option value="default">Sélectionner</option>
+								<!-- Retour API Domaine + Métier -->
+							</select>
+						</div>
+					</fieldset>
 					<div>
-						<select name="domaine" id="domaine">
-							<option value="default">Sélectionner</option>
-							<!-- Retour API Domaine + Métier -->
-						</select>
+						<img class="info metier" src="./images/info.png">
+						<span class="metier">Pour effectuer une recherche par métier, sélectionner un métier dans la liste, puis appuyer sur le bouton 'Valider'</span>
 					</div>
-				</fieldset>
-				<fieldset id="FieldCdésire"> <legend>Compétence désiré</legend>
-				<div id="concept">
 				</div>
-				
-				</fieldset>
-				<fieldset> <legend>Compétence acquise </legend>
-				<div id="prerequis">
+				<div>
+					<fieldset id="FieldCdésire"> <legend>Compétences désirées</legend>
+						<div id="concept"></div>
+					</fieldset>
+					<div>
+						<img class="info concept" src="./images/info.png">
+						<span class="concept">Pour effectuer une recherche par concept, sélectionner une ou plusieurs compétences dans la liste, puis appuyer sur le bouton 'Valider'</span>
+					</div>
 				</div>
-				</fieldset>
+				<div>
+					<fieldset> <legend>Compétences acquises </legend>
+						<div id="prerequis"></div>
+					</fieldset>
+					<div>
+						<img class="info prerequis" src="./images/info.png">
+						<span class="prerequis">Pour effectuer une recherche par prérequis, sélectionner une ou plusieurs compétences dans la liste, puis appuyer sur le bouton 'Valider'</span>
+					</div>
+				</div>
 				<div>
 					<button class="validation">Valider</button>
 					<!-- <button>Réinitialiser</button> -->
