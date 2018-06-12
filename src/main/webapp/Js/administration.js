@@ -70,8 +70,8 @@ function getData(i){
 						}
 					}
 					html += "<td>" +
-							"<a><img src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
-							"<a><img src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
+							"<a><img title='Modifier' src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
+							"<a><img title='Supprimer'  src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
 							"</td>";
 					html += "</tr>";
 				}

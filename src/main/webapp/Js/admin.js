@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+//jQuery(document).ready(function($) {
 	var tables = 
 	[
 	//{nom : "Admin", colonnes : ["id_admin", "login", "mdp"], can_modify : true},
@@ -37,11 +37,14 @@ function initialisation(){
 	getAllData();
 }
 
+
+
 function getAllData(){
 	for (i in tables){
 		getData(i);
 	}
 }
+
 function getData(i){
 	var url = "http://localhost:8080/api/getAll" + tables[i].nom;
 	var type="GET";
@@ -64,8 +67,8 @@ function getData(i){
 						}
 					}
 					html += "<td>" +
-							"<a><img src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
-							"<a><img src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
+							"<a><img title='Modifier' src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
+							"<a><img title='Supprimer' src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
 							"</td>";
 					html += "</tr>";
 				}
@@ -142,8 +145,4 @@ function ajouter(table, nbr_colonnes){
 $('document').ready(initialisation());
 
 
-//console.log("coucou");
-
-
-});
 
