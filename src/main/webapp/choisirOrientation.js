@@ -28,7 +28,7 @@ function shownumber(arg){
 //}
 
 $(document).ready(function(){
-	/*var domaines;
+	var domaines;
 	var metiers;
 	var dom;
 	$.post('api/getDomaines', function(data) {
@@ -49,21 +49,24 @@ $(document).ready(function(){
 				async: false
 			});
 		}
-	});*/
-	var domainesCD;
-	$.post('api/getAllConcepts', function(data) {
-		domainesCD = data;
-		for(i in domainesCD) {
-			$("#concept").append('<input type="checkbox" value="'+domainesCD[i].id_concept+'"/><label>'+domainesCD[i].nom+'</label><br>');
-		}
+
+		var domainesCD;
+		$.post('api/getAllConcepts', function(data) {
+			domainesCD = data;
+			for(i in domainesCD) {
+				$("#concept").append('<input type="checkbox" value="'+domainesCD[i].id_concept+'"/><label>'+domainesCD[i].nom+'</label><br>');
+			}
+		});
+		var domainesCA;
+		$.get('api/getAllPrerequis', function(data) {
+			domainesCA = data;
+			for(i in domainesCA) {
+				$("#prerequis").append('<input type="checkbox" id="prerequis_' + domainesCA[i].id_prerequis + '" value="'+domainesCA[i].id_prerequis+'" onClick=notation(this.id) /><label>'+domainesCA[i].nom+'</label><br>');
+			}
+		});
 	});
-	var domainesCA;
-	$.get('api/getAllPrerequis', function(data) {
-		domainesCA = data;
-		for(i in domainesCA) {
-			$("#prerequis").append('<input type="checkbox" id="prerequis_' + domainesCA[i].id_prerequis + '" value="'+domainesCA[i].id_prerequis+'" onClick=notation(this.id) /><label>'+domainesCA[i].nom+'</label><br>');
-		}
-	});
+
+	
 	$(".typeRecherche button.validation").click(function() {
 		$("#APIParcours").empty();
 		var listeMetiers = [];
