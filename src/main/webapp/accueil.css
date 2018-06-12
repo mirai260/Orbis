@@ -1,17 +1,53 @@
 @charset "ISO-8859-1";
 
+* {
+	box-sizing: border-box;
+}
+html {
+	height: 100%;
+}
 body
 {
-    background-color: #fafafa;
-    margin-bottom:10%;
+	margin: 0;
+    min-height: 100%;
+    background-color: #FAFAFA;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-
-#titre
-{
+.head {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	color: Navy;
+    align-items: center;
+	height: 8em;
+	background-color: #809ff7;
+	box-shadow:0 0 20px 0 rgba(100, 100, 100, 0.2), 0 6px 25px 0 rgba(100, 100, 100, 0.5);
+}
+.head img {
+	height: 50%;
+	margin-left: 5%;
+}
+.head .titre
+{
+	width: 100%;
+    position: absolute;
+    text-align: center;
+}
+.head .titre h1 {
+	font-size: 40px;
+}
+.head .titre h1, .head .titre h2
+{
+	margin: 0;
+	color: #102047;
+}
+.head a {
+	position: absolute;
+    right: 0em;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow:0 0 20px 0 rgba(100, 100, 100, 0.2), 0 6px 25px 0 rgba(100, 100, 100, 0.5);
+    text-decoration: none;
+    color: #102047;
+    margin-right:5%;
 }
 
 #conteneur
@@ -19,7 +55,34 @@ body
     display: flex;
     flex-direction: column;
     align-items: center;
-    color : blue;
+    width: 50%;
+    margin: 2em auto;
+}
+.selectMetier {
+	position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    align-items: center;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    width: 100%;
+    margin: auto;
+    color: #102047;
+    border-radius: 7px;
+}
+.selectMetier p {
+	font-weight: bold;
+    font-size: 14px;
+}
+
+#domaine {
+	border-radius: 3px;
+	
+}
+#domaine {
+	border-radius: 3px;
+	
 }
 #fromMetier
 {
@@ -28,9 +91,6 @@ body
 	align-items: center;
 	color : #237a8f;
 }
-#lien_connection{
-	float:right;
-}
 .hide {
 	display: none;
 }
@@ -38,18 +98,23 @@ body
 	color: green !important;
 }
 .accordeon {
-    width: 70%;
+    width: 100%;
     list-style: none;
     padding: 0;
 }
+.accordeon li {
+    border-top: solid 1px black;
+}
+.accordeon li:first-child {
+	border-top: none;
+}
 .accordeon li h2 {
-	background-color: #eee;
+	background-color: lavender;
     color: #444;
     cursor: pointer;
     padding: 18px;
     text-align: left;
     margin: 0;
-    border-top: solid 1px;
 }
 .accordeon li div {
 	padding: 1em 0 1em 18px;
