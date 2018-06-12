@@ -100,9 +100,9 @@ public class bddAdminApiController implements bddAdminApi{
     
     
     /************* Parcours ***************/
-    public ResponseEntity<List<Parcours>> getAllParcours(){
-    	return new ResponseEntity<>(Parcours.find.all(), HttpStatus.OK);
-    }
+//    public ResponseEntity<List<Parcours>> getAllParcours(){
+//    	return new ResponseEntity<>(Parcours.find.all(), HttpStatus.OK);
+//    }
     
     public ResponseEntity<Void> addParcours(@ApiParam(value = "Domaine à ajouter" ,required=true) @RequestBody Parcours parcours){
     	parcours.insert();

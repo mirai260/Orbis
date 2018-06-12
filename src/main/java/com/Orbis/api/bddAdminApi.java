@@ -147,14 +147,14 @@ public interface bddAdminApi {
     
     
     /************* Parcours ***************/
-    @ApiOperation(value = "Récupérer tout les parcours", notes = "", response = Void.class, tags={ "administration", })
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = Void.class)
-    })
-    @RequestMapping(value = "api/getAllParcours",
-            produces = { "application/json" },
-            method = RequestMethod.GET)
-    ResponseEntity<List<Parcours>> getAllParcours();
+//    @ApiOperation(value = "Récupérer tout les parcours", notes = "", response = Void.class, tags={ "administration", })
+//    @ApiResponses(value = {
+//            @ApiResponse(code = 200, message = "OK", response = Void.class)
+//    })
+//    @RequestMapping(value = "api/getAllParcours",
+//            produces = { "application/json" },
+//            method = RequestMethod.GET)
+//    ResponseEntity<List<Parcours>> getAllParcours();
     
     @ApiOperation(value = "Ajouter un Parcours", notes = "", response = Void.class, tags={ "administration", })
     @ApiResponses(value = {
