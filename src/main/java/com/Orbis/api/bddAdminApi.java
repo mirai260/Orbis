@@ -18,6 +18,7 @@ import com.Orbis.model.Metier;
 import com.Orbis.model.Parcours;
 import com.Orbis.model.Prerequis;
 import com.Orbis.model.PrerequisParcours;
+import com.Orbis.model.Professeur;
 
 @Api(value = "template", description = "the template API")
 public interface bddAdminApi {
@@ -104,6 +105,46 @@ public interface bddAdminApi {
             produces = { "application/json" },
             method = RequestMethod.PUT)
     ResponseEntity<Void> modifyEleve(@ApiParam(value = "Eleve à modifier" ,required=true) @RequestBody Eleve eleve);
+    
+    
+/************ Professeur **************/
+    
+    @ApiOperation(value = "Récupérer tout les Professeurs", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = Void.class)
+    })
+    @RequestMapping(value = "api/getAllProfesseur",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<List<Professeur>> getAllProfesseur();
+    
+    
+    @ApiOperation(value = "Ajouter un Professeur", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ajout effectué", response = Void.class),
+    })
+    @RequestMapping(value = "api/addProfesseur",
+            produces = { "application/json" },
+            method = RequestMethod.POST)
+    ResponseEntity<Void> addProfesseur(@ApiParam(value = "Professeur à ajouter" ,required=true) @RequestBody Professeur professeur);
+    
+    @ApiOperation(value = "Supprimer un Professeur", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Supression effectué", response = Void.class)
+    })
+    @RequestMapping(value = "api/deleteProfesseur",
+            produces = { "application/json" },
+            method = RequestMethod.DELETE)
+    ResponseEntity<Void> deleteProfesseur(@ApiParam(value = "Id du Professeur à supprimer" ,required=true) @RequestBody Long id);
+    
+    @ApiOperation(value = "Modifier un Professeur", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "modification effectué", response = Void.class)
+    })
+    @RequestMapping(value = "api/modifyProfesseur",
+            produces = { "application/json" },
+            method = RequestMethod.PUT)
+    ResponseEntity<Void> modifyProfesseur(@ApiParam(value = "Professeur à modifier" ,required=true) @RequestBody Professeur professeur);
     
     
     /************ Admin ***************/

@@ -59,6 +59,13 @@ create table parcours (
   constraint pk_parcours primary key (id_parcours)
 );
 
+create table parcours_professeur (
+  id_parcours_professeur        bigint auto_increment not null,
+  id_parcours                   bigint,
+  id_professeur                 bigint,
+  constraint pk_parcours_professeur primary key (id_parcours_professeur)
+);
+
 create table prerequis (
   id_prerequis                  bigint auto_increment not null,
   nom                           varchar(255),
