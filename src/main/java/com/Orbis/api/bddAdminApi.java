@@ -6,6 +6,7 @@ import io.swagger.annotations.*;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -370,4 +371,19 @@ public interface bddAdminApi {
             produces = { "application/json" },
             method = RequestMethod.PUT)
     ResponseEntity<Void> modifyMetier(@ApiParam(value = "Metier à modifier" ,required=true) @RequestBody Metier metier);
+    
+    
+    
+    
+    
+    
+    @ApiOperation(value = "Connaitre son role", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "success", response = Void.class)
+    })
+    @RequestMapping(value = "api/getMyRole",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<GrantedAuthority> getMyRole();
+    
 }
