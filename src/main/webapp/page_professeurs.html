@@ -15,34 +15,30 @@
     	</div>
         <div id="modulesetconcepts">
             <div id="Parcours">
-	            <div class="positionParcour" onClick="alert('coucou');">Module 1</div>
-	            <div class="positionParcour">Module 2</div>
             </div>
-            <div id="concepts">
-    	        <div id="concepts1">
-                    <form method="post" action="">
-                    <p>Cochez les concepts à ajouter au module 1<br />
-                        <input type="checkbox" name="Concept 1" id="concept1" /> <label for="concept1">Concept 1</label><br />
-                        <input type="checkbox" name="Concept 2" id="concept2" /> <label for="concept2">Concept 2</label><br />
-                        <input type="checkbox" name="Concept 3" id="concept3" /> <label for="concept3">Concept 3</label><br />
-                        <input type="checkbox" name="Concept 4" id="concept4" /> <label for="concepts4">Concept 4</label><br />
-                        <input type="submit" value="Envoyer" />
-                    </p>
-                    </form>
+            <div id="vision">
+                <p>Cochez les concepts à supprimer du Parcours<br />
+    	        <div id="ConceptsParcours">
                 </div>
-                <div id="concepts2">
-                    <form method="post" action="">
-                    <p>Cochez les concepts à ajouter au module 2<br />
-                        <input type="checkbox" name="Concept 1" id="concept1" /> <label for="concept1">Concept 1</label><br />
-                        <input type="checkbox" name="Concept 2" id="concept2" /> <label for="concept2">Concept 2</label><br />
-                        <input type="checkbox" name="Concept 3" id="concept3" /> <label for="concept3">Concept 3</label><br />
-                        <input type="checkbox" name="Concept 4" id="concept4" /> <label for="concepts4">Concept 4</label><br />
-                        <input type="submit" value="Envoyer" />
-                    </p>
-                    </form>
+                </p>
+                 <input type="button" id="bouton" value="ajouter" onclick="ajouteHTMLajoueconcept();">
+                <input type="button" id="bouton" value="supprimer" onclick="suprimerConcept();">
+                 <p>Cochez les concepts à supprimer du Prerequis<br />
+                <div id="ConceptsPrerequi">
                 </div>
-                <input type="button" id="bouton" value="ajouter">
-                <input type="button" id="bouton" value="supprimer">
+                </p>
+                <input type="button" id="bouton" value="ajouter" onclick="ajouteHTMLajouePrerequis();">
+                <input type="button" id="bouton" value="supprimer" onclick="suprimerPrerequi();">
+            </div>
+            <div id="ajoueSupression">
+            	<div id="ajouteConcept"></div>
+            	
+            	<div id="supprimerConcept"></div>
+            	
+            	<div id="ajouePrerequis"></div>
+            	
+            	<div id="supprimerPrerequis"></div>
+            
             </div>
         </div>
         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>

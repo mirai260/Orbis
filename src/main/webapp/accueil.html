@@ -8,18 +8,24 @@
 <link rel="stylesheet" href="Footer.css" />
 </head>
 	<body id="body">
-		<a id="lien_connection" href="./connexion.html">Se connecter</a>
+		<div class="head">
+			<img src="./images/Logo-Orbis.png">
+			<div class="titre">
+				<h1>Orbis</h1>
+				<h2>Votre réference pour l'orientation</h2>
+			</div>
+			<a id="lien_connexion" href="./connexion.html">Se connecter</a>
+		</div>
 		<div id="conteneur">
-			<h1 id="titre">Orbis</h1>
-			<h2>Votre réference pour l'orientation</h2>
-			<p>Veuillez choisir le métier qui vous intéresse et nous vous conseillerons les parcours correspondant:</p>
-			
-			<select name="domaine" id="domaine">
-				<!-- Retour API Domaine et Métier -->
-			</select>
-			
-			<button class="validation">Valider</button>
-			
+			<div class="selectMetier">
+				<p>Veuillez choisir le métier qui vous intéresse et nous vous conseillerons les parcours correspondant:</p>
+				
+				<select name="domaine" id="domaine">
+					<!-- Retour API Domaine et Métier -->
+				</select>
+				
+				<button class="validation">Valider</button>
+			</div>
 			<ul id="APIParcours" class="accordeon">
 				<!-- Retour API Parcours -->
 			</ul>
