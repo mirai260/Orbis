@@ -3,6 +3,7 @@
 console.log("test");
 
 function signin(){
+	
 	var username = $("#login").val();
 	var password = $("#mdp").val();
 	$("body").css("cursor", "progress");
@@ -21,8 +22,7 @@ function signin(){
 			//$("body").css("cursor", "default");
 			if (status == "success"){
 				sessionStorage.setItem('token', result.access_token);
-				$("body").css("cursor", "default");
-				window.location.href = "choisirOrientation.html";
+				redirect(result.access_token);
 			}
 		},
 		error: function(xhr,status,error) {
@@ -34,6 +34,41 @@ function signin(){
 			$("body").css("cursor", "default");
 		}
 	});
+}
+
+
+
+
+
+
+
+function redirect(token){
+	console.log(token);
+	$.ajax({
+		url: 'api/getMyRole', 
+		type: 'GET',
+		data: "",
+		headers: {
+			"Authorization":"Bearer " + token,
+			"Content-Type":"application/x-www-form-urlencoded; charset=utf-8"
+		},
+		success: function(data) {
+			$("body").css("cursor", "default");
+			var role = data.authority;
+			if (role == "ROLE_ELEVE"){
+				window.location.href = "choisirOrientation.html";
+			}
+			else if (role == "ROLE_PROFESSEUR"){
+				window.location.href = "page_professeurs.html";
+			}
+			else if (role == "ROLE_ADMIN"){
+				window.location.href = "Admin.html";
+			}
+			else{
+				window.location.href = "accueil.html";
+			}
+		}
+	})
 }
 
 

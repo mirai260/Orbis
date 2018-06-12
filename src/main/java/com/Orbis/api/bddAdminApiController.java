@@ -14,6 +14,9 @@ import io.swagger.annotations.ApiParam;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,7 +60,6 @@ public class bddAdminApiController implements bddAdminApi{
     
     public ResponseEntity<Void> addEleve(@ApiParam(value = "Eleve à ajouter" ,required=true) @RequestBody Eleve eleve){
     	eleve.setMdp(BCrypt.hashpw(eleve.getMdp(), BCrypt.gensalt()));
-    	System.out.println(BCrypt.hashpw(eleve.getMdp(), BCrypt.gensalt()));
     	eleve.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -83,7 +85,6 @@ public class bddAdminApiController implements bddAdminApi{
     
     public ResponseEntity<Void> addProfesseur(@ApiParam(value = "Professeur à ajouter" ,required=true) @RequestBody Professeur professeur){
     	professeur.setMdp(BCrypt.hashpw(professeur.getMdp(), BCrypt.gensalt()));
-    	System.out.println(BCrypt.hashpw(professeur.getMdp(), BCrypt.gensalt()));
     	professeur.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -108,6 +109,7 @@ public class bddAdminApiController implements bddAdminApi{
     }
     
     public ResponseEntity<Void> addAdmin(@ApiParam(value = "Admin à ajouter" ,required=true) @RequestBody Admin admin){
+    	admin.setMdp(BCrypt.hashpw(admin.getMdp(), BCrypt.gensalt()));
     	admin.insert();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -234,6 +236,17 @@ public class bddAdminApiController implements bddAdminApi{
     	oldMetier.edit(metier);
     	oldMetier.save();
     	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    /************************************************************************
+     * 
+     * *********************************************************************/
+    
+    
+    public ResponseEntity<GrantedAuthority> getMyRole(){
+    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    	GrantedAuthority role = (GrantedAuthority)authentication.getAuthorities().toArray()[0];
+    	return new ResponseEntity<>(role, HttpStatus.OK);
     }
 
 }

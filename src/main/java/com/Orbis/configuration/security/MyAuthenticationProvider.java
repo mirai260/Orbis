@@ -38,7 +38,7 @@ public class MyAuthenticationProvider implements org.springframework.security.au
 		Eleve eleve = Eleve.getEleveByLogin(login);
         if (eleve != null && BCrypt.checkpw(password, eleve.getMdp())){
         	List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-	        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
+	        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_ELEVE"));
 			return new UsernamePasswordAuthenticationToken(eleve.getLogin(), eleve.getMdp(), grantedAuthorityList);
         }
         Professeur professeur = Professeur.getProfesseurByLogin(login);
