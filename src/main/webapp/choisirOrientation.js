@@ -1,15 +1,15 @@
 function notation(arg) {
-	if($("#prerequis input").is(":checked")){
-		$("#prerequis input[value="+arg+"]").next().after("<input name='level' type='range' min='1' max='5' value='2' step='1' onchange=shownumber("+arg+") />");
-		$("#prerequis input[value="+arg+"]").next().next().after("<label id=number>2</label>");
+	if($("#" + arg).is(":checked")){
+		$("#" + arg).next().after("<input name='level' type='range' min='1' max='5' value='2' step='1' onchange=shownumber('"+arg+"') />");
+		$("#" + arg).next().next().after("<label id=number>2</label>");
 	}
 	else {
-		$("#prerequis input[value="+arg+"]").next().next().remove();
-		$("#prerequis input[value="+arg+"]").next().next().remove();
+		$("#" + arg).next().next().remove();
+		$("#" + arg).next().next().remove();
 	}
 }
 function shownumber(arg){
-	$("#prerequis input[value="+arg+"]").next().next().next().text($("#prerequis input[value="+arg+"]").next().next().val());
+	$("#" + arg).next().next().next().text($("#" + arg).next().next().val());
 }
 
 //var acc = document.getElementsByClassName("accordion");
@@ -61,7 +61,7 @@ $(document).ready(function(){
 	$.get('api/getAllPrerequis', function(data) {
 		domainesCA = data;
 		for(i in domainesCA) {
-			$("#prerequis").append('<input type="checkbox" value="'+domainesCA[i].id_prerequis+'" onClick=notation(this.value) /><label>'+domainesCA[i].nom+'</label><br>');
+			$("#prerequis").append('<input type="checkbox" id="prerequis_' + domainesCA[i].id_prerequis + '" value="'+domainesCA[i].id_prerequis+'" onClick=notation(this.id) /><label>'+domainesCA[i].nom+'</label><br>');
 		}
 	});
 	$(".typeRecherche button.validation").click(function() {
@@ -150,6 +150,9 @@ $(document).ready(function(){
 							}
 						});
 					});
+					/*$('html, body').animate({ scrollDown: $(document).height() - $(window).height() }, 500, function() {
+					    $(this).animate({ scrollTop: 0 }, 500);
+					});*/
 				},
 				contentType: "application/json; charset=utf-8",
 				dataType: 'json'
