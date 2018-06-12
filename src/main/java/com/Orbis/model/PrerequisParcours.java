@@ -28,6 +28,12 @@ public class PrerequisParcours extends Model{
 		Expression expr = Expr.eq("id_prerequis_parcours", id_prerequis_parcours);
 		return find.where().add(expr).findUnique();
 	}
+    
+    public static PrerequisParcours getPrerequisParcours(Long id_prerequis, Long id_parcours){
+		Expression expr1 = Expr.eq("id_prerequis", id_prerequis);
+		Expression expr2 = Expr.eq("id_parcours", id_parcours);
+		return find.where().add(expr1).add(expr2).findUnique();
+	}
 
     public Long getId_prerequis_parcours() {
         return id_prerequis_parcours;
