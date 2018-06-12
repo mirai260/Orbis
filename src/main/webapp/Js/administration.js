@@ -70,9 +70,9 @@ function getData(i){
 						}
 					}
 					html += "<td>" +
-							"<a><img hidden id='valider_table" + i + "_ligne" + j + "' src='images/valider.png' height='20' onclick='valider(" + i + ", " + j + ")'/></a>" +
-							"<a><img id='edit_table" + i + "_ligne" + j + "' src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
-							"<a><img src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
+							"<a><img title='valider' hidden id='valider_table" + i + "_ligne" + j + "' src='images/valider.png' height='20' onclick='valider(" + i + ", " + j + ")'/></a>" +
+							"<a><img title='Modifier' id='edit_table" + i + "_ligne" + j + "' src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
+							"<a><img title='Supprimer' src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
 							"</td>";
 					html += "</tr>";
 				}

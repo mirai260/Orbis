@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+//jQuery(document).ready(function($) {
 	var tables = 
 	[
 	//{nom : "Admin", colonnes : ["id_admin", "login", "mdp"], can_modify : true},
@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
 function initialisation(){
 	
 	for (i in tables){
-		var table = "<h3>" + tables[i].nom + "</h3><table id='table" + i + "'><tr>";
+		var table = "<h3 class='table'>" + tables[i].nom + "</h3><table class='table'  id='table" + i + "'><tr>";
 		for (j in tables[i].colonnes){
 			table += "<th>" + tables[i].colonnes[j] + "</th>";
 		}
@@ -37,11 +37,14 @@ function initialisation(){
 	getAllData();
 }
 
+
+
 function getAllData(){
 	for (i in tables){
 		getData(i);
 	}
 }
+
 function getData(i){
 	var url = "http://localhost:8080/api/getAll" + tables[i].nom;
 	var type="GET";
@@ -64,8 +67,8 @@ function getData(i){
 						}
 					}
 					html += "<td>" +
-							"<a><img src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
-							"<a><img src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
+							"<a><img title='Modifier' src='images/edit.ico' height='20' onclick='showEdit(" + i + ", " + j + ")'/></a>" +
+							"<a><img title='Supprimer' src='images/delete.png' height='20' onclick='supprimer(" + i + ", " + data[j][tables[i].colonnes[0]] + ")'/></a>" +
 							"</td>";
 					html += "</tr>";
 				}
@@ -84,6 +87,12 @@ function emptyTable(i){
 	for (j in tables[i].colonnes){
 		if (j == 0)
 			table += "<td>" + "<input type='text' id='table" + i + "_colonne" + j + "' disabled/>" + "</td>";
+		if (i == 2 || j==2 ){
+			table += "<td>" + "<textarea type='text' id='table" + i + "_colonne" + j + "'/></textarea>" + "</td>";
+		}
+		if (i == 3 && j == 2 ){
+			table += "<td>" + "<textarea type='text' id='table" + i + "_colonne" + j + "'/></textarea>" + "</td>";
+		}
 		else
 			table += "<td>" + "<input type='text' id='table" + i + "_colonne" + j + "'/>" + "</td>";
 	}
@@ -142,8 +151,4 @@ function ajouter(table, nbr_colonnes){
 $('document').ready(initialisation());
 
 
-//console.log("coucou");
-
-
-});
 
