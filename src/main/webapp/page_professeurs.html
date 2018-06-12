@@ -4,16 +4,20 @@
 
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="style_professeurs.css" />
         <title>Page de sélection/modification des modules liés - Professeur connecté</title>
     </head>
 
     <body>
-        <h1>Orbis</h1>
-        <h2>Votre référence pour l'orientation</h2>
-        <div id="concepts">Nom du Professeur</div>
+    	<div id="dessus">
+    		<div id="blockNoirPlusclaire"></div>
+    		<div id="Orbis">Orbis</div>
+    	</div>
         <div id="modulesetconcepts">
-            <div id="modules"><p id="module1">Module 1</p></br><p id="module2">Module 2</p></div>
+            <div id="Parcours">
+	            <div class="positionParcour" onClick="alert('coucou');">Module 1</div>
+	            <div class="positionParcour">Module 2</div>
+            </div>
             <div id="concepts">
     	        <div id="concepts1">
                     <form method="post" action="">
@@ -37,10 +41,12 @@
                     </p>
                     </form>
                 </div>
+                <input type="button" id="bouton" value="ajouter">
+                <input type="button" id="bouton" value="supprimer">
             </div>
         </div>
         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    	<script type="text/javascript" src="script.js"></script>
+    	<script type="text/javascript" src="modules.js"></script>
     </body>
 
 </html>
