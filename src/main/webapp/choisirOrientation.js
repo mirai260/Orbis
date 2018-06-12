@@ -42,7 +42,7 @@ $(document).ready(function(){
 				success: function(data) {
 					metiers = data;
 					for(j in metiers) {
-						$("optgroup."+domaines[i].name+"").append('<option value='+metiers[j].idMetier+'>'+metiers[j].nom+'</option>');
+						$("optgroup."+domaines[i].name+"").append('<option value='+metiers[j].id_metier+'>'+metiers[j].nom+'</option>');
 					}
 				},
 				contentType: "application/json; charset=utf-8",
@@ -73,6 +73,7 @@ $(document).ready(function(){
 		var listeConcepts = [];
 		var listePrerequis = [];
 		var parcours;
+		var parcoursMatched;
 		var optionMetier = $("#domaine option:selected").val();
 		$("#concept input:checked").each(function() {
 			listeConcepts.push($(this).val());
@@ -86,23 +87,11 @@ $(document).ready(function(){
 				type: 'POST',
 				data: JSON.stringify(listeConcepts),
 				success: function(data) {
-					parcours = data;
-					for(i in parcours) {
-						$("#APIParcours").append('<li class="parcour"><h2>'+parcours[i].nom+'</h2><div class="hide">'+parcours[i].description+'</div></li>');
-					}
-					$(".accordeon .parcour").each(function() {
-						$(this).find("h2").click(function() {
-							if($(this).parent().find("div").is(":hidden")) {
-								$(this).parent().find("div").slideDown(200);
-							}
-							else {
-								$(this).parent().find("div").slideUp(200);
-							}
-						});
-					});
+					parcoursMatched = data;
 				},
 				contentType: "application/json; charset=utf-8",
-				dataType: 'json'
+				dataType: 'json',
+				async: false
 			});
 		}
 		else if(listePrerequis.length > 0) {
@@ -111,23 +100,11 @@ $(document).ready(function(){
 				type: 'POST',
 				data: JSON.stringify(listePrerequis),
 				success: function(data) {
-					parcours = data;
-					for(i in parcours) {
-						$("#APIParcours").append('<li class="parcour"><h2>'+parcours[i].nom+'</h2><div class="hide">'+parcours[i].description+'</div></li>');
-					}
-					$(".accordeon .parcour").each(function() {
-						$(this).find("h2").click(function() {
-							if($(this).parent().find("div").is(":hidden")) {
-								$(this).parent().find("div").slideDown(200);
-							}
-							else {
-								$(this).parent().find("div").slideUp(200);
-							}
-						});
-					});
+					parcoursMatched = data;
 				},
 				contentType: "application/json; charset=utf-8",
-				dataType: 'json'
+				dataType: 'json',
+				async: false
 			});
 		}
 		else if(optionMetier != "default") {
@@ -139,27 +116,42 @@ $(document).ready(function(){
 				type: 'POST',
 				data: JSON.stringify(listeMetiers),
 				success: function(data) {
-					parcours = data;
-					for(i in parcours) {
-						$("#APIParcours").append('<li class="parcour"><h2>'+parcours[i].nom+'</h2><div class="hide">'+parcours[i].description+'</div></li>');
-					}
-					$(".accordeon .parcour").each(function() {
-						$(this).find("h2").click(function() {
-							if($(this).parent().find("div").is(":hidden")) {
-								$(this).parent().find("div").slideDown(200);
-							}
-							else {
-								$(this).parent().find("div").slideUp(200);
-							}
-						});
-					});
-					/*$('html, body').animate({ scrollDown: $(document).height() - $(window).height() }, 500, function() {
-					    $(this).animate({ scrollTop: 0 }, 500);
-					});*/
+					parcoursMatched = data;
 				},
 				contentType: "application/json; charset=utf-8",
-				dataType: 'json'
+				dataType: 'json',
+				async: false
 			});
 		}
+		$.ajax({
+			url: 'api/sortParcours', 
+			type: 'POST',
+			data: JSON.stringify(parcoursMatched),
+			success: function(data) {
+				parcours = data;
+				for(i in parcours) {
+					if(parcours[i].matched) {
+						$("#APIParcours").append('<li class="parcour matched"><h2>'+parcours[i].parcours.nom+'</h2><div class="hide">'+parcours[i].parcours.description+'</div></li>');
+					}
+					else {
+						$("#APIParcours").append('<li class="parcour"><h2>'+parcours[i].parcours.nom+'</h2><div class="hide">'+parcours[i].parcours.description+'</div></li>');
+					}
+				}
+				parcoursMatched = null;
+				$(".accordeon .parcour").each(function() {
+					$(this).find("h2").click(function() {
+						if($(this).parent().find("div").is(":hidden")) {
+							$(this).parent().find("div").slideDown(200);
+						}
+						else {
+							$(this).parent().find("div").slideUp(200);
+						}
+					});
+				});
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',
+			async: false
+		});
 	});
 });
