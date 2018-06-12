@@ -15,10 +15,8 @@
     	</div>
         <div id="modulesetconcepts">
             <div id="Parcours">
-	            <div class="positionParcour" onClick="alert('coucou');">Module 1</div>
-	            <div class="positionParcour">Module 2</div>
             </div>
-            <div id="concepts">
+            <div id="vision">
     	        <div id="concepts1">
                     <form method="post" action="">
                     <p>Cochez les concepts à ajouter au module 1<br />
@@ -30,6 +28,8 @@
                     </p>
                     </form>
                 </div>
+                 <input type="button" id="bouton" value="ajouter" onclick="ajouteHTMLajoueconcept();">
+                <input type="button" id="bouton" value="supprimer">
                 <div id="concepts2">
                     <form method="post" action="">
                     <p>Cochez les concepts à ajouter au module 2<br />
@@ -41,8 +41,18 @@
                     </p>
                     </form>
                 </div>
-                <input type="button" id="bouton" value="ajouter">
+                <input type="button" id="bouton" value="ajouter" onclick="ajouteHTMLajouePrerequis();">
                 <input type="button" id="bouton" value="supprimer">
+            </div>
+            <div id="ajoueSupression">
+            	<div id="ajouteConcept"></div>
+            	
+            	<div id="supprimerConcept"></div>
+            	
+            	<div id="ajouePrerequis"></div>
+            	
+            	<div id="supprimerPrerequis"></div>
+            
             </div>
         </div>
         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
