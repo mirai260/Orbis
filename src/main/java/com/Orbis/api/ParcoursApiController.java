@@ -3,6 +3,7 @@ package com.Orbis.api;
 import com.Orbis.model.ConceptParcours;
 import com.Orbis.model.MetierParcours;
 import com.Orbis.model.Parcours;
+import com.Orbis.model.ParcoursMatched;
 import com.Orbis.model.PrerequisParcours;
 
 import io.swagger.annotations.ApiParam;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -66,4 +68,33 @@ public class ParcoursApiController implements ParcoursApi{
                 .findList();
         return new ResponseEntity<>(parcours, HttpStatus.OK);
     }
+
+	@Override
+	public ResponseEntity<List<ParcoursMatched>> sortParcours(
+			@ApiParam(value = "liste de parcours qui correspondent à la recherche", required = true)
+			@RequestBody List<Parcours> listeParcoursMatched
+	) {
+		List<ParcoursMatched> res = new ArrayList<>();
+		List<Parcours> parcours = inClass_getAllParcours();
+		for(Parcours p : parcours) {
+			if(listeParcoursMatched.contains(p)) {
+				ParcoursMatched pMatched = new ParcoursMatched(p, true);
+				res.add(0, pMatched);
+			}
+			else {
+				ParcoursMatched pMatched = new ParcoursMatched(p, false);
+				res.add(pMatched);
+			}
+		}
+		return new ResponseEntity<>(res, HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<List<Parcours>> getAllParcours() {
+		return new ResponseEntity<>(Parcours.find.all(), HttpStatus.OK);
+	}
+	
+	public List<Parcours> inClass_getAllParcours() {
+		return Parcours.find.all();
+	}
 }
