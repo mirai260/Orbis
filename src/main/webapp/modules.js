@@ -38,7 +38,7 @@ function Concept(val){
 			console.log(data);
 			parcours = data;
 			for(i in parcours) {
-				$("#ConceptsParcours").append('<input type="checkbox" id='+parcours[i].id_concepts+' />'+parcours[i].nom+'<br>');
+				$("#ConceptsParcours").append('<input type="checkbox" id="'+parcours[i].id_concept+'" />'+parcours[i].nom+'<br>');
 			}
 		},
 		error: function(data) {
@@ -95,12 +95,38 @@ function ajoutePrerequi(){
 	
 }
 
+function ajouteConcept(){
+	console.log("test");
+	$('#selectAjouteConcept input').each(function() {
+		if ($(this).is(':checked')){
+			console.log($(this));
+			var data = {id_parcours : Parcours, id_concept : $(this).attr('id')};
+			console.log(JSON.stringify(data));
+			$.ajax({
+				url: 'api/setConceptToParcours', 
+				type: 'POST',
+				data: JSON.stringify(data),
+				//headers : {"Content-Type": "application/json"},
+				success: function(data) {
+					console.log(data);
+				},
+				error: function(data) {
+					console.log(data);
+				},
+				contentType: "application/json; charset=utf-8"
+			})
+		}
+	});
+	
+	
+}
+
 /*#########################################################################*/
 
 function ajouteHTMLajoueconcept(){
 	$("#ajouteConcept").empty();
 	$("#ajouePrerequis").empty();
-	$("#ajouteConcept").append('<div id="selectAjouteConcept"></div>');
+	$("#ajouteConcept").append('<div id="selectAjouteConcept"></div> <button type="button" onClick="ajouteConcept();">ajouter</button>');
 	ajouteSelect1();
 	
 }
@@ -128,6 +154,55 @@ function ajouteSelect2(){
 		domainesCD = data;
 		for(i in domainesCD) {
 			$("#selectAjoutePrerequis").append('<input type="checkbox" id="'+domainesCD[i].id_prerequis+'"/><label>'+domainesCD[i].nom+'</label><br>');
+		}
+	});
+}
+
+/*############################Suprimer#################################################*/
+
+function suprimerConcept(){
+	$('#ConceptsParcours input').each(function() {
+		if ($(this).is(':checked')){
+			console.log($(this));
+			var data = {id_parcours : Parcours, id_concept : $(this).attr('id')};
+			console.log(JSON.stringify(data));
+			$.ajax({
+				url: 'api/removeConceptFromParcours', 
+				type: 'DELETE',
+				data: JSON.stringify(data),
+				//headers : {"Content-Type": "application/json"},
+				success: function(data) {
+					console.log(data);
+				},
+				error: function(data) {
+					console.log(data);
+				},
+				contentType: "application/json; charset=utf-8"
+			})
+		}
+	});
+	
+}
+
+function suprimerPrerequi(){
+	$('#ConceptsPrerequi input').each(function() {
+		if ($(this).is(':checked')){
+			console.log($(this));
+			var data = {id_parcours : Parcours, id_prerequis : $(this).attr('id')};
+			console.log(JSON.stringify(data));
+			$.ajax({
+				url: 'api/removePrerequisFromParcours', 
+				type: 'DELETE',
+				data: JSON.stringify(data),
+				//headers : {"Content-Type": "application/json"},
+				success: function(data) {
+					console.log(data);
+				},
+				error: function(data) {
+					console.log(data);
+				},
+				contentType: "application/json; charset=utf-8"
+			})
 		}
 	});
 }
