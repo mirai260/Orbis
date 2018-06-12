@@ -18,16 +18,13 @@ jQuery(document).ready(function($) {
   	
   }
 
-
-  //document.querySelector('.Navbar__Link-toggle');
-  //console.log(document.querySelector('.Navbar__Link-toggle'));
-
-  //document.querySelector('.Navbar__Link-toggle').addEventListener('click', classToggle);
-
   $('.ajout_metier').click(function() {
   	classToggleJob();
   	
 
+  });
+  $('.deconnexion').click(function(){
+  	sessionStorage.removeItem('token');
   });
 
 var tables = 
