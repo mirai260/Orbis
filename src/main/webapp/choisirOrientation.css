@@ -203,3 +203,15 @@ footer {
 	padding:3px;
 	font-size:11px;
 }
+.deconnexion{
+  color:black !important;
+  position: absolute;
+    right: 2em;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow:0 0 20px 0 rgba(100, 100, 100, 0.2), 0 6px 25px 0 rgba(100, 100, 100, 0.5);
+    text-decoration: none;
+    
+    margin-right:5%;
+}

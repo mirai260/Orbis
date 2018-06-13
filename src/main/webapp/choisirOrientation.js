@@ -163,3 +163,6 @@ $(document).ready(function(){
 });
 
 $( "footer" ).load( "./Footer.html" );
+$('.deconnexion').click(function(){
+  	sessionStorage.removeItem('token');
+  });
