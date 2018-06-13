@@ -26,8 +26,8 @@ public class Parcours_Professeur extends Model{
 
     
     
-    public static Parcours_Professeur getMetiersParcoursById(Long id_metier_parcours){
-		Expression expr = Expr.eq("id_metier_parcours", id_metier_parcours);
+    public static Parcours_Professeur getParcours_ProfesseurById(Long id_parcours_professeur){
+		Expression expr = Expr.eq("id_parcours_professeur", id_parcours_professeur);
 		return find.where().add(expr).findUnique();
 	}
 

@@ -63,7 +63,7 @@ public class MyAuthenticationProvider implements org.springframework.security.au
 			if (test != null)
 			{
 				List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-		        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
+		        grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_ELEVE"));
 				return new UsernamePasswordAuthenticationToken(test.getLogin(), test.getPassword(), grantedAuthorityList);
 			}
 		} catch(Exception e) {

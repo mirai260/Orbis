@@ -17,6 +17,7 @@ import com.Orbis.model.Domaine;
 import com.Orbis.model.Eleve;
 import com.Orbis.model.Metier;
 import com.Orbis.model.Parcours;
+import com.Orbis.model.Parcours_Professeur;
 import com.Orbis.model.Prerequis;
 import com.Orbis.model.PrerequisParcours;
 import com.Orbis.model.Professeur;
@@ -371,6 +372,41 @@ public interface bddAdminApi {
             produces = { "application/json" },
             method = RequestMethod.PUT)
     ResponseEntity<Void> modifyMetier(@ApiParam(value = "Metier à modifier" ,required=true) @RequestBody Metier metier);
+    
+    
+/************ Parcours_Professeurs **************/
+    
+    @ApiOperation(value = "Récupérer tout les Parcours_professeur", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = Void.class)
+    })
+    @RequestMapping(value = "api/getAllParcours_Professeur",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<List<Parcours_Professeur>> getAllParcours_Professeur();
+    
+    
+    @ApiOperation(value = "Ajouter un Parcours_Professeur", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ajout effectué", response = Void.class),
+    })
+    @RequestMapping(value = "api/addParcours_Professeur",
+            produces = { "application/json" },
+            method = RequestMethod.POST)
+    ResponseEntity<Void> addParcours_Professeur(@ApiParam(value = "Parcours_Professeur à ajouter" ,required=true) @RequestBody Parcours_Professeur parcours_professeur);
+    
+    @ApiOperation(value = "Supprimer un Parcours_Professeur", notes = "", response = Void.class, tags={ "administration", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Supression effectué", response = Void.class)
+    })
+    @RequestMapping(value = "api/deleteParcours_Professeur",
+            produces = { "application/json" },
+            method = RequestMethod.DELETE)
+    ResponseEntity<Void> deleteParcours_Professeur(@ApiParam(value = "Id du Parcours_Professeur à supprimer" ,required=true) @RequestBody Long id);
+    
+    
+    
+    
     
     
     
