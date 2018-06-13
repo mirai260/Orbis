@@ -87,12 +87,7 @@ function emptyTable(i){
 	for (j in tables[i].colonnes){
 		if (j == 0)
 			table += "<td>" + "<input type='text' id='table" + i + "_colonne" + j + "' disabled/>" + "</td>";
-		if (i == 2 || j==2 ){
-			table += "<td>" + "<textarea type='text' id='table" + i + "_colonne" + j + "'/></textarea>" + "</td>";
-		}
-		if (i == 3 && j == 2 ){
-			table += "<td>" + "<textarea type='text' id='table" + i + "_colonne" + j + "'/></textarea>" + "</td>";
-		}
+		
 		else
 			table += "<td>" + "<input type='text' id='table" + i + "_colonne" + j + "'/>" + "</td>";
 	}
