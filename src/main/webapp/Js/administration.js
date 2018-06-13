@@ -11,7 +11,8 @@ var tables =
 	{nom : "Parcours", colonnes : ["id_parcours", "nom", "description"], can_modify : true},
 	{nom : "Prerequis", colonnes : ["id_prerequis", "nom", "description", "niveau", "note"], can_modify : true},
 	{nom : "Prerequis_parcours", colonnes : ["id_prerequis_parcours", "id_parcours", "id_prerequis"], can_modify : false},
-	{nom : "Professeur", colonnes : ["id_professeur", "login", "mdp"], can_modify : true}
+	{nom : "Professeur", colonnes : ["id_professeur", "login", "mdp"], can_modify : true},
+	{nom : "Parcours_Professeur", colonnes : ["id_parcours_professeur", "id_parcours", "id_professeur"], can_modify : false}
 ];
 
 

@@ -6,6 +6,7 @@ import com.Orbis.model.Domaine;
 import com.Orbis.model.Eleve;
 import com.Orbis.model.Metier;
 import com.Orbis.model.Parcours;
+import com.Orbis.model.Parcours_Professeur;
 import com.Orbis.model.Prerequis;
 import com.Orbis.model.PrerequisParcours;
 import com.Orbis.model.Professeur;
@@ -235,6 +236,23 @@ public class bddAdminApiController implements bddAdminApi{
     	Metier oldMetier = Metier.getMetierById(metier.getId_metier());
     	oldMetier.edit(metier);
     	oldMetier.save();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    /************* Parcours_Professeur ***************/
+    
+    public ResponseEntity<List<Parcours_Professeur>> getAllParcours_Professeur(){
+    	return new ResponseEntity<>(Parcours_Professeur.find.all(), HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> addParcours_Professeur(@ApiParam(value = "Parcours_Professeur à ajouter" ,required=true) @RequestBody Parcours_Professeur parcours_professeur){
+    	parcours_professeur.insert();
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    public ResponseEntity<Void> deleteParcours_Professeur(@ApiParam(value = "Id du Parcours_Professeur à supprimer" ,required=true) @RequestBody Long id){
+    	Parcours_Professeur parcours_professeur = Parcours_Professeur.getParcours_ProfesseurById(id);
+    	parcours_professeur.delete();
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
