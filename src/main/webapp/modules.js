@@ -91,6 +91,7 @@ function ajoutePrerequi(){
 			})
 		}
 	});
+	window.location.href = "page_professeurs.html";
 	
 	
 }
@@ -117,6 +118,7 @@ function ajouteConcept(){
 			})
 		}
 	});
+	window.location.href = "page_professeurs.html";
 	
 	
 }
@@ -181,7 +183,7 @@ function suprimerConcept(){
 			})
 		}
 	});
-	
+	window.location.href = "page_professeurs.html";
 }
 
 function suprimerPrerequi(){
@@ -205,4 +207,5 @@ function suprimerPrerequi(){
 			})
 		}
 	});
+	window.location.href = "page_professeurs.html";
 }
