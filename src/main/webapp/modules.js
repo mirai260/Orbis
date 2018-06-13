@@ -209,3 +209,6 @@ function suprimerPrerequi(){
 	});
 	window.location.href = "page_professeurs.html";
 }
+$('.deconnexion').click(function(){
+  	sessionStorage.removeItem('token');
+  });
