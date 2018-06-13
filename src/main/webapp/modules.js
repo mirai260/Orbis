@@ -83,6 +83,7 @@ function ajoutePrerequi(){
 				//headers : {"Content-Type": "application/json"},
 				success: function(data) {
 					console.log(data);
+					window.location.href = "page_professeurs.html";
 				},
 				error: function(data) {
 					console.log(data);
@@ -91,7 +92,6 @@ function ajoutePrerequi(){
 			})
 		}
 	});
-	window.location.href = "page_professeurs.html";
 	
 	
 }
@@ -110,6 +110,7 @@ function ajouteConcept(){
 				//headers : {"Content-Type": "application/json"},
 				success: function(data) {
 					console.log(data);
+					window.location.href = "page_professeurs.html";
 				},
 				error: function(data) {
 					console.log(data);
@@ -118,7 +119,6 @@ function ajouteConcept(){
 			})
 		}
 	});
-	window.location.href = "page_professeurs.html";
 	
 	
 }
@@ -175,6 +175,7 @@ function suprimerConcept(){
 				//headers : {"Content-Type": "application/json"},
 				success: function(data) {
 					console.log(data);
+					window.location.href = "page_professeurs.html";
 				},
 				error: function(data) {
 					console.log(data);
@@ -183,7 +184,6 @@ function suprimerConcept(){
 			})
 		}
 	});
-	window.location.href = "page_professeurs.html";
 }
 
 function suprimerPrerequi(){
@@ -199,6 +199,7 @@ function suprimerPrerequi(){
 				//headers : {"Content-Type": "application/json"},
 				success: function(data) {
 					console.log(data);
+					window.location.href = "page_professeurs.html";
 				},
 				error: function(data) {
 					console.log(data);
@@ -207,7 +208,6 @@ function suprimerPrerequi(){
 			})
 		}
 	});
-	window.location.href = "page_professeurs.html";
 }
 $('.deconnexion').click(function(){
   	sessionStorage.removeItem('token');
